@@ -4,27 +4,10 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 export default function Products() {
-  const [scrolled, setScrolled] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMounted, setIsMounted] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  useEffect(() => {
-    setIsMounted(true)
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('mousemove', handleMouseMove)
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
-
+ 
   const getParallaxStyle = (multiplier: number = 1) => {
     if (!isMounted) return {}
     return {
@@ -32,98 +15,91 @@ export default function Products() {
     }
   }
 
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Leadership', path: '/leadership' },
-    { name: 'Products', path: '/products' },
-    { name: 'Universe', path: '/universe-led' },
-    { name: 'Contact', path: '/contact' }
-  ]
 
   const sectors = [
-    { 
-      name: 'Paints & Coatings', 
-      icon: '🎨', 
-      description: 'Premium chemical solutions for paint manufacturing and industrial coatings', 
-      gradient: 'from-red-500 to-pink-500' 
+    {
+      name: 'Paints & Coatings',
+      icon: '🎨',
+      description: 'Premium chemical solutions for paint manufacturing and industrial coatings',
+      gradient: 'from-red-500 to-pink-500'
     },
-    { 
-      name: 'Resins', 
-      icon: '⚗️', 
-      description: 'High-performance resins for diverse industrial applications', 
-      gradient: 'from-purple-500 to-indigo-500' 
+    {
+      name: 'Resins',
+      icon: '⚗️',
+      description: 'High-performance resins for diverse industrial applications',
+      gradient: 'from-purple-500 to-indigo-500'
     },
-    { 
-      name: 'Acrylic', 
-      icon: '💎', 
-      description: 'Advanced acrylic compounds for specialty manufacturing', 
-      gradient: 'from-blue-500 to-cyan-500' 
+    {
+      name: 'Acrylic',
+      icon: '💎',
+      description: 'Advanced acrylic compounds for specialty manufacturing',
+      gradient: 'from-blue-500 to-cyan-500'
     },
-    { 
-      name: 'Textile', 
-      icon: '🧵', 
-      description: 'Textile chemicals and dyes for fabric industry excellence', 
-      gradient: 'from-teal-500 to-green-500' 
+    {
+      name: 'Textile',
+      icon: '🧵',
+      description: 'Textile chemicals and dyes for fabric industry excellence',
+      gradient: 'from-teal-500 to-green-500'
     },
-    { 
-      name: 'Inks & Printing', 
-      icon: '🖨️', 
-      description: 'Professional grade inks and printing chemical solutions', 
-      gradient: 'from-indigo-500 to-purple-500' 
+    {
+      name: 'Inks & Printing',
+      icon: '🖨️',
+      description: 'Professional grade inks and printing chemical solutions',
+      gradient: 'from-indigo-500 to-purple-500'
     },
-    { 
-      name: 'Adhesives & Glue', 
-      icon: '🔗', 
-      description: 'Industrial strength adhesives for manufacturing needs', 
-      gradient: 'from-yellow-500 to-orange-500' 
+    {
+      name: 'Adhesives & Glue',
+      icon: '🔗',
+      description: 'Industrial strength adhesives for manufacturing needs',
+      gradient: 'from-yellow-500 to-orange-500'
     },
-    { 
-      name: 'Packaging', 
-      icon: '📦', 
-      description: 'Chemical solutions for packaging industry requirements', 
-      gradient: 'from-orange-500 to-red-500' 
+    {
+      name: 'Packaging',
+      icon: '📦',
+      description: 'Chemical solutions for packaging industry requirements',
+      gradient: 'from-orange-500 to-red-500'
     },
-    { 
-      name: 'Pharmaceutical', 
-      icon: '💊', 
-      description: 'Pharmaceutical-grade chemicals meeting global standards', 
-      gradient: 'from-green-500 to-emerald-500' 
+    {
+      name: 'Pharmaceutical',
+      icon: '💊',
+      description: 'Pharmaceutical-grade chemicals meeting global standards',
+      gradient: 'from-green-500 to-emerald-500'
     },
-    { 
-      name: 'Agriculture', 
-      icon: '🌾', 
-      description: 'Agricultural chemicals supporting modern farming', 
-      gradient: 'from-lime-500 to-green-500' 
+    {
+      name: 'Agriculture',
+      icon: '🌾',
+      description: 'Agricultural chemicals supporting modern farming',
+      gradient: 'from-lime-500 to-green-500'
     },
-    { 
-      name: 'Cosmetics', 
-      icon: '💄', 
-      description: 'Premium ingredients for cosmetic formulations', 
-      gradient: 'from-pink-500 to-rose-500' 
+    {
+      name: 'Cosmetics',
+      icon: '💄',
+      description: 'Premium ingredients for cosmetic formulations',
+      gradient: 'from-pink-500 to-rose-500'
     },
-    { 
-      name: 'Food Processing', 
-      icon: '🍽️', 
-      description: 'Food-safe chemicals for processing industry', 
-      gradient: 'from-amber-500 to-yellow-500' 
+    {
+      name: 'Food Processing',
+      icon: '🍽️',
+      description: 'Food-safe chemicals for processing industry',
+      gradient: 'from-amber-500 to-yellow-500'
     },
-    { 
-      name: 'Lubricants', 
-      icon: '⚙️', 
-      description: 'Industrial lubricants and specialty oils', 
-      gradient: 'from-slate-500 to-zinc-500' 
+    {
+      name: 'Lubricants',
+      icon: '⚙️',
+      description: 'Industrial lubricants and specialty oils',
+      gradient: 'from-slate-500 to-zinc-500'
     },
-    { 
-      name: 'Perfumes & Fragrances', 
-      icon: '🌸', 
-      description: 'Fine fragrance chemicals and aroma compounds', 
-      gradient: 'from-violet-500 to-purple-500' 
+    {
+      name: 'Perfumes & Fragrances',
+      icon: '🌸',
+      description: 'Fine fragrance chemicals and aroma compounds',
+      gradient: 'from-violet-500 to-purple-500'
     },
-    { 
-      name: 'Construction', 
-      icon: '🏗️', 
-      description: 'Construction chemicals and building materials', 
-      gradient: 'from-stone-500 to-slate-500' 
+    {
+      name: 'Construction',
+      icon: '🏗️',
+      description: 'Construction chemicals and building materials',
+      gradient: 'from-stone-500 to-slate-500'
     }
   ]
 
@@ -152,76 +128,6 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Premium Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${
-        scrolled 
-          ? 'bg-white/90 backdrop-blur-xl shadow-2xl shadow-slate-200/20 py-4' 
-          : 'bg-transparent py-6'
-      }`}>
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-24">
-            <Link href="/" className="flex items-center space-x-4 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl shadow-blue-500/30">
-                  <span className="text-white font-black text-2xl tracking-tighter">AI</span>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-                  AL-IBRAHIM GROUP
-                </h1>
-                <p className="text-xs text-slate-500 font-semibold tracking-wide">CHEMICAL EXCELLENCE SINCE 2010</p>
-              </div>
-            </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden xl:flex items-center space-x-16">
-              {navLinks.map((item, index) => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  className="relative text-slate-700 hover:text-blue-600 font-semibold text-lg transition-all duration-300 group py-2"
-                  style={{ transitionDelay: `${index * 50}ms` }}
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-500"></span>
-                </Link>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden w-12 h-12 flex flex-col items-center justify-center space-y-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all duration-300"
-            >
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-white border-t border-slate-200 shadow-xl">
-            <div className="container mx-auto px-8 py-6">
-              <div className="flex flex-col space-y-4">
-                {navLinks.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-slate-700 hover:text-blue-600 font-semibold text-lg py-3 border-b border-slate-100 transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 overflow-hidden">
@@ -229,18 +135,18 @@ export default function Products() {
           <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
-              <div 
+              <div
                 className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-100"
                 style={getParallaxStyle(0.5)}
               >
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
                 <span className="text-sm font-semibold text-blue-600">Premium Chemical Distribution Since 2010</span>
               </div>
-              
+
               <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Industrial</span>
                 <br />
@@ -248,14 +154,14 @@ export default function Products() {
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Solutions</span>
               </h1>
-              
+
               <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
-                Comprehensive chemical solutions across 14+ industries since 2010. 
+                Comprehensive chemical solutions across 14+ industries since 2010.
                 Al-Ibrahim Group delivers premium-quality products with unmatched reliability.
               </p>
-              
+
               <div className="pt-6">
-                <Link 
+                <Link
                   href="/contact"
                   className="inline-flex items-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
@@ -281,12 +187,12 @@ export default function Products() {
             </div>
 
             <div className="relative">
-              <div 
+              <div
                 className="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-300/50 border-8 border-white"
                 style={getParallaxStyle(1)}
               >
                 <div className="relative w-full h-[600px] bg-gradient-to-br from-slate-200 to-slate-100">
-                  <img 
+                  <img
                     src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2070&auto=format&fit=crop"
                     alt="Industrial Chemical Solutions"
                     className="w-full h-full object-cover"
@@ -295,7 +201,7 @@ export default function Products() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="absolute -bottom-8 -left-8 bg-white rounded-3xl p-8 shadow-2xl shadow-slate-400/30 border border-slate-100 transform hover:scale-105 hover:rotate-2 transition-all duration-500 cursor-pointer"
                 style={getParallaxStyle(-0.5)}
               >
@@ -312,7 +218,7 @@ export default function Products() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="absolute -top-8 -right-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl p-6 shadow-2xl shadow-blue-500/40 transform hover:scale-105 hover:-rotate-2 transition-all duration-500"
                 style={getParallaxStyle(0.3)}
               >
@@ -379,12 +285,12 @@ export default function Products() {
                 className="group relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 cursor-pointer overflow-hidden"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${type.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
+
                 <div className="relative z-10">
                   <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br ${type.gradient} rounded-2xl text-white mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
                     {type.icon}
                   </div>
-                  
+
                   <h3 className="text-3xl font-black text-slate-900 mb-4">{type.title}</h3>
                   <p className="text-lg text-slate-600 leading-relaxed">{type.description}</p>
                 </div>
@@ -416,12 +322,12 @@ export default function Products() {
                 className="group relative bg-white rounded-3xl p-8 border-2 border-slate-100 hover:border-transparent hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${sector.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
+
                 <div className="relative z-10 text-center">
                   <div className="text-5xl mb-6 group-hover:scale-125 transition-transform duration-500">
                     {sector.icon}
                   </div>
-                  
+
                   <h3 className="text-xl font-black text-slate-900 group-hover:text-white mb-3 transition-colors duration-500">
                     {sector.name}
                   </h3>
@@ -453,37 +359,37 @@ export default function Products() {
             </h2>
 
             <p className="text-xl lg:text-2xl text-blue-50 mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
-              Every product in our portfolio undergoes rigorous quality control and testing to ensure compliance with international standards. 
+              Every product in our portfolio undergoes rigorous quality control and testing to ensure compliance with international standards.
               Our partnerships with world-leading manufacturers guarantee authenticity and consistency.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { 
+                {
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   ),
-                  title: 'Quality Tested', 
+                  title: 'Quality Tested',
                   desc: 'Every batch meets international standards'
                 },
-                { 
+                {
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   ),
-                  title: 'Global Partners', 
+                  title: 'Global Partners',
                   desc: 'Leading manufacturers worldwide'
                 },
-                { 
+                {
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                   ),
-                  title: 'ISO Certified', 
+                  title: 'ISO Certified',
                   desc: 'Compliance with global quality norms'
                 }
               ].map((item, i) => (
@@ -515,11 +421,11 @@ export default function Products() {
                 </h2>
 
                 <p className="text-xl text-slate-600 leading-relaxed">
-                  Get in touch with our team to discuss your specific requirements and receive a customized quote. 
+                  Get in touch with our team to discuss your specific requirements and receive a customized quote.
                   We're here to support your manufacturing success.
                 </p>
 
-                <Link 
+                <Link
                   href="/contact"
                   className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
                 >

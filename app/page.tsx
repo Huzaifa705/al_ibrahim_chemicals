@@ -1,29 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMounted, setIsMounted] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+
+
 
   useEffect(() => {
-    setIsMounted(true)
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('mousemove', handleMouseMove)
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 50)
+  }
+
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [])
 
   const getParallaxStyle = (multiplier: number = 1) => {
     if (!isMounted) return {}
@@ -31,14 +26,6 @@ export default function Home() {
       transform: `translate(${(mousePosition.x - window.innerWidth / 2) / 50 * multiplier}px, ${(mousePosition.y - window.innerHeight / 2) / 50 * multiplier}px)`
     }
   }
-
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Leadership', path: '/leadership' },
-    { name: 'Products', path: '/products' },
-    { name: 'Universe', path: '/universe-led' },
-    { name: 'Contact', path: '/contact' }
-  ]
 
   const stats = [
     { value: '15+', label: 'Years of Excellence', desc: 'Industry Leadership' },
@@ -95,76 +82,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Premium Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${
-        scrolled 
-          ? 'bg-white/90 backdrop-blur-xl shadow-2xl shadow-slate-200/20 py-4' 
-          : 'bg-transparent py-6'
-      }`}>
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-24">
-            <Link href="/" className="flex items-center space-x-4 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl shadow-blue-500/30">
-                  <span className="text-white font-black text-2xl tracking-tighter">AI</span>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-                  AL-IBRAHIM GROUP
-                </h1>
-                <p className="text-xs text-slate-500 font-semibold tracking-wide">CHEMICAL EXCELLENCE SINCE 2010</p>
-              </div>
-            </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden xl:flex items-center space-x-16">
-              {navLinks.map((item, index) => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  className="relative text-slate-700 hover:text-blue-600 font-semibold text-lg transition-all duration-300 group py-2"
-                  style={{ transitionDelay: `${index * 50}ms` }}
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-500"></span>
-                </Link>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden w-12 h-12 flex flex-col items-center justify-center space-y-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all duration-300"
-            >
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-white border-t border-slate-200 shadow-xl">
-            <div className="container mx-auto px-8 py-6">
-              <div className="flex flex-col space-y-4">
-                {navLinks.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-slate-700 hover:text-blue-600 font-semibold text-lg py-3 border-b border-slate-100 transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 overflow-hidden">
@@ -172,18 +89,18 @@ export default function Home() {
           <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
-              <div 
+              <div
                 className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-100"
                 style={getParallaxStyle(0.5)}
               >
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
                 <span className="text-sm font-semibold text-blue-600">Trusted Chemical Partner Since 2010</span>
               </div>
-              
+
               <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Global</span>
                 <br />
@@ -191,14 +108,14 @@ export default function Home() {
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Excellence</span>
               </h1>
-              
+
               <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
-                Al-Ibrahim Group delivers world-class chemical products with uncompromising quality standards. 
+                Al-Ibrahim Group delivers world-class chemical products with uncompromising quality standards.
                 Your trusted partner for industrial excellence across Pakistan and beyond.
               </p>
-              
+
               <div className="pt-6">
-                <Link 
+                <Link
                   href="/products"
                   className="inline-flex items-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
@@ -220,12 +137,12 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div 
+              <div
                 className="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-300/50 border-8 border-white"
                 style={getParallaxStyle(1)}
               >
                 <div className="relative w-full h-[600px] bg-gradient-to-br from-slate-200 to-slate-100">
-                  <img 
+                  <img
                     src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop"
                     alt="Al-Ibrahim Chemical Manufacturing Facility"
                     className="w-full h-full object-cover"
@@ -234,7 +151,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="absolute -bottom-8 -left-8 bg-white rounded-3xl p-8 shadow-2xl shadow-slate-400/30 border border-slate-100 transform hover:scale-105 hover:rotate-2 transition-all duration-500 cursor-pointer"
                 style={getParallaxStyle(-0.5)}
               >
@@ -251,7 +168,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="absolute -top-8 -right-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl p-6 shadow-2xl shadow-blue-500/40 transform hover:scale-105 hover:-rotate-2 transition-all duration-500"
                 style={getParallaxStyle(0.3)}
               >
@@ -307,7 +224,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <Link 
+              <Link
                 href="/leadership"
                 className="inline-flex items-center space-x-3 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-500 transform hover:-translate-y-1"
               >
@@ -321,7 +238,7 @@ export default function Home() {
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-300/50 border-4 border-white transform hover:scale-105 transition-all duration-700">
                 <div className="relative w-full h-[650px] bg-gradient-to-br from-slate-200 to-slate-100">
-                  <img 
+                  <img
                     src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2070&auto=format&fit=crop"
                     alt="Chemical Laboratory Testing Facility"
                     className="w-full h-full object-cover"
@@ -353,27 +270,27 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { 
-                value: '15+', 
-                label: 'Years of Excellence', 
+              {
+                value: '15+',
+                label: 'Years of Excellence',
                 desc: 'Industry-leading experience in chemical distribution and supply chain management',
                 color: 'from-blue-600 to-blue-500'
               },
-              { 
-                value: '500+', 
-                label: 'Global Partners', 
+              {
+                value: '500+',
+                label: 'Global Partners',
                 desc: 'Trusted relationships with manufacturers, suppliers, and industrial clients worldwide',
                 color: 'from-violet-600 to-violet-500'
               },
-              { 
-                value: '98%', 
-                label: 'Satisfaction Rate', 
+              {
+                value: '98%',
+                label: 'Satisfaction Rate',
                 desc: 'Exceptional service quality with industry-leading client retention and satisfaction',
                 color: 'from-emerald-600 to-emerald-500'
               },
-              { 
-                value: '50+', 
-                label: 'Countries Served', 
+              {
+                value: '50+',
+                label: 'Countries Served',
                 desc: 'International reach spanning Asia, Middle East, Europe, and emerging markets',
                 color: 'from-amber-600 to-amber-500'
               }
@@ -383,16 +300,16 @@ export default function Home() {
                 className="group relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 cursor-pointer overflow-hidden"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                
+
                 <div className="relative z-10">
                   <div className={`text-6xl lg:text-7xl font-black bg-gradient-to-br ${stat.color} bg-clip-text text-transparent mb-4`}>
                     {stat.value}
                   </div>
                   <div className="text-xl font-black text-slate-900 mb-3">{stat.label}</div>
                   <p className="text-sm text-slate-600 leading-relaxed">{stat.desc}</p>
-                  
+
                   <div className="mt-6 h-2 bg-slate-200 rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className={`h-full bg-gradient-to-r ${stat.color} rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000`}
                     ></div>
                   </div>
@@ -425,12 +342,12 @@ export default function Home() {
                 className="group relative bg-white rounded-3xl p-8 border-2 border-slate-100 hover:border-transparent hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
+
                 <div className="relative z-10">
                   <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl text-white mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
                     {service.icon}
                   </div>
-                  
+
                   <h3 className="text-2xl font-black text-slate-900 group-hover:text-white mb-4 transition-colors duration-500">
                     {service.title}
                   </h3>
@@ -555,37 +472,37 @@ export default function Home() {
                 </h2>
 
                 <p className="text-xl lg:text-2xl text-blue-50 mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
-                  At Al-Ibrahim Group, every client relationship is built on trust, transparency, and exceptional service. 
+                  At Al-Ibrahim Group, every client relationship is built on trust, transparency, and exceptional service.
                   We don't just deliver chemicals—we deliver peace of mind, reliability, and partnership that drives your success forward.
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-8 mb-16">
                   {[
-                    { 
+                    {
                       icon: (
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>
                       ),
-                      title: 'Tailored Solutions', 
+                      title: 'Tailored Solutions',
                       desc: 'Customized chemical portfolios designed specifically for your industry requirements and operational needs'
                     },
-                    { 
+                    {
                       icon: (
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                       ),
-                      title: 'Rapid Response', 
+                      title: 'Rapid Response',
                       desc: '24/7 dedicated support team with industry experts ready to assist with technical queries and emergencies'
                     },
-                    { 
+                    {
                       icon: (
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                       ),
-                      title: 'Partnership Approach', 
+                      title: 'Partnership Approach',
                       desc: 'Long-term collaboration focused on mutual growth, innovation, and sustainable business success'
                     }
                   ].map((item, i) => (
@@ -627,11 +544,11 @@ export default function Home() {
                 </h2>
 
                 <p className="text-xl text-slate-600 leading-relaxed">
-                  Join hundreds of satisfied clients who trust Al-Ibrahim Group for their chemical supply needs. 
+                  Join hundreds of satisfied clients who trust Al-Ibrahim Group for their chemical supply needs.
                   Let's discuss how our comprehensive solutions can drive your business forward.
                 </p>
 
-                <Link 
+                <Link
                   href="/contact"
                   className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
                 >
@@ -644,42 +561,42 @@ export default function Home() {
 
               <div className="lg:col-span-2 grid grid-cols-1 gap-5">
                 {[
-                  { 
+                  {
                     icon: (
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     ),
-                    label: 'Email', 
-                    value: 'info@al-ibrahim.com' 
+                    label: 'Email',
+                    value: 'info@al-ibrahim.com'
                   },
-                  { 
+                  {
                     icon: (
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     ),
-                    label: 'Phone', 
-                    value: '+92 300 1234567' 
+                    label: 'Phone',
+                    value: '+92 300 1234567'
                   },
-                  { 
+                  {
                     icon: (
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     ),
-                    label: 'Location', 
-                    value: 'Karachi, Pakistan' 
+                    label: 'Location',
+                    value: 'Karachi, Pakistan'
                   },
-                  { 
+                  {
                     icon: (
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     ),
-                    label: 'Hours', 
-                    value: 'Mon-Sat: 9AM-6PM' 
+                    label: 'Hours',
+                    value: 'Mon-Sat: 9AM-6PM'
                   }
                 ].map((item, i) => (
                   <div key={i} className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 group">

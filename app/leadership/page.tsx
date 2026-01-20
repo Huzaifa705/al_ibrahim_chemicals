@@ -7,7 +7,6 @@ export default function Leadership() {
   const [scrolled, setScrolled] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMounted, setIsMounted] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -32,13 +31,6 @@ export default function Leadership() {
     }
   }
 
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Leadership', path: '/leadership' },
-    { name: 'Products', path: '/products' },
-    { name: 'Universe', path: '/universe-led' },
-    { name: 'Contact', path: '/contact' }
-  ]
 
   const coreValues = [
     {
@@ -105,76 +97,6 @@ export default function Leadership() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Premium Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${
-        scrolled 
-          ? 'bg-white/90 backdrop-blur-xl shadow-2xl shadow-slate-200/20 py-4' 
-          : 'bg-transparent py-6'
-      }`}>
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="flex items-center justify-between h-24">
-            <Link href="/" className="flex items-center space-x-4 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl shadow-blue-500/30">
-                  <span className="text-white font-black text-2xl tracking-tighter">AI</span>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-                  AL-IBRAHIM GROUP
-                </h1>
-                <p className="text-xs text-slate-500 font-semibold tracking-wide">CHEMICAL EXCELLENCE SINCE 2010</p>
-              </div>
-            </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden xl:flex items-center space-x-16">
-              {navLinks.map((item, index) => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  className="relative text-slate-700 hover:text-blue-600 font-semibold text-lg transition-all duration-300 group py-2"
-                  style={{ transitionDelay: `${index * 50}ms` }}
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-500"></span>
-                </Link>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden w-12 h-12 flex flex-col items-center justify-center space-y-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all duration-300"
-            >
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-slate-900 transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-white border-t border-slate-200 shadow-xl">
-            <div className="container mx-auto px-8 py-6">
-              <div className="flex flex-col space-y-4">
-                {navLinks.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-slate-700 hover:text-blue-600 font-semibold text-lg py-3 border-b border-slate-100 transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
 
       {/* Hero Section - Updated to Match Other Pages */}
       <section className="relative pt-40 pb-32 overflow-hidden">
