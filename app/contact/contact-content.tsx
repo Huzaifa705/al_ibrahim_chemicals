@@ -131,7 +131,7 @@ export default function ContactContent() {
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
         </div>
         
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="container mx-auto px-6 lg:px-12 relative z-10 border-3 border-lime-400">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
               <div 

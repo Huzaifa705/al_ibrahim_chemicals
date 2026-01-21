@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Al-Ibrahim Group | Premium Chemical Suppliers",
     description: "World-class chemical products with ISO-certified quality. Serving 50+ countries with 500+ global partners.",
-    url: "https://yourdomain.com",
+    url: "https://al-ibrahim-chemicals.vercel.app/",
     siteName: "Al-Ibrahim Group",
     images: [
       {

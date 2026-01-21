@@ -395,7 +395,7 @@ export default function LeadershipContent() {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
                   { icon: '🎯', label: 'Strategic Vision', desc: 'Clear direction for growth' },
                   { icon: '🤝', label: 'Strong Partnerships', desc: 'Global relationships' },
