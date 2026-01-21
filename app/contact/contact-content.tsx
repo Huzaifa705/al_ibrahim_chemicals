@@ -235,7 +235,7 @@ export default function ContactContent() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section id="contact-form" className="py-16 sm:py-20 lg:py-24 xl:py-32 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden border-3 border-lime-400">
+      <section id="contact-form" className="py-16 sm:py-20 lg:py-24 xl:py-32 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl"></div>
         </div>
