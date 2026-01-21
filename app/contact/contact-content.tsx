@@ -131,7 +131,7 @@ export default function ContactContent() {
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
         </div>
         
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 border-3 border-lime-400">
+        <div className="container mx-auto px-4 sm:px-6  lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
               <div 
@@ -142,7 +142,7 @@ export default function ContactContent() {
                 <span className="text-sm font-semibold text-blue-600">We're Here to Help You</span>
               </div>
               
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Let's Start</span>
                 <br />
                 <span className="text-slate-900">A</span>
@@ -150,14 +150,14 @@ export default function ContactContent() {
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Conversation</span>
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
                 Have questions about our products or services? Our expert team is ready to provide you with the perfect chemical and LED solutions for your business needs.
               </p>
               
               <div className="pt-6 flex flex-col sm:flex-row gap-4">
                 <a 
                   href="#contact-form"
-                  className="inline-flex items-center justify-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                  className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 lg:px-10 py-4  bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <span>Send Message</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,7 +166,7 @@ export default function ContactContent() {
                 </a>
                 <a 
                   href="tel:+923001234567"
-                  className="inline-flex items-center justify-center space-x-2 px-10 py-4 bg-slate-100 text-slate-900 rounded-xl font-semibold hover:bg-slate-200 transition-all duration-300"
+                  className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 lg:px-10 py-4 bg-slate-100 text-slate-900 rounded-xl font-semibold hover:bg-slate-200 transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -235,29 +235,29 @@ export default function ContactContent() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section id="contact-form" className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
+      <section id="contact-form" className="py-16 sm:py-20 lg:py-24 xl:py-32 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden border-3 border-lime-400">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-8 lg:px-16 relative z-10">
-          <div className="grid lg:grid-cols-5 gap-12">
+        <div className="container mx-autopx-4 sm:px-6 lg:px-12 xl:px-16 relative z-10">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-[3rem] shadow-2xl shadow-slate-300/50 border-2 border-slate-100 p-10 lg:p-12">
+              <div className="bg-white rounded-3xl sm:rounded-[3rem] shadow-2xl shadow-slate-300/50 border-2 border-slate-100 p-6 sm:p-8 lg:p-12">
                 <div className="mb-10">
-                  <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
-                    <span className="text-sm font-bold text-blue-700 tracking-wide">SEND US A MESSAGE</span>
+                  <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-4 sm:mb-6">
+                    <span className="text-xs sm:text-sm font-bold text-blue-700 tracking-wide">SEND US A MESSAGE</span>
                   </div>
-                  <h2 className="text-4xl lg:text-5xl font-black text-slate-900 mb-4">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-3 sm:mb-4">
                     Share Your Requirements
                   </h2>
-                  <p className="text-lg text-slate-600">
+                  <p className="text-base sm:text-lg text-slate-600">
                     Fill out the form and our team will get back to you within 24 hours
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">
@@ -291,7 +291,7 @@ export default function ContactContent() {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-bold text-slate-700 mb-2">
                         Phone Number *
