@@ -100,20 +100,20 @@ const Navbar = () => {
                 ? 'bg-white/90 backdrop-blur-xl shadow-2xl shadow-slate-200/20 py-4'
                 : 'bg-transparent py-6'
                 }`}>
-                <div className="container mx-auto px-8 lg:px-16">
+                <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
                     <div className="flex items-center justify-between h-24">
                         <Link href="/" className="flex items-center space-x-4 group">
                             <div className="relative">
                                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                                <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl shadow-blue-500/30">
-                                    <span className="text-white font-black text-2xl tracking-tighter">AI</span>
+                                <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl shadow-blue-500/30">
+                                    <span className="text-white font-black text-lg sm:text-xl lg:text-2xl tracking-tighter">AI</span>
                                 </div>
                             </div>
                             <div>
-                                <h1 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
+                                <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
                                     AL-IBRAHIM GROUP
                                 </h1>
-                                <p className="text-xs text-slate-500 font-semibold tracking-wide">CHEMICAL EXCELLENCE SINCE 2010</p>
+                                <p className="text-[10px] sm:text-xs text-slate-500 font-semibold tracking-wide">CHEMICAL EXCELLENCE SINCE 2010</p>
                             </div>
                         </Link>
 
@@ -123,7 +123,7 @@ const Navbar = () => {
                                 <Link
                                     key={item.name}
                                     href={item.path}
-                                    className="relative text-slate-700 hover:text-blue-600 font-semibold text-lg transition-all duration-300 group py-2"
+                                    className="relative text-slate-700 hover:text-blue-600 font-semibold text-base xl:text-lg transition-all duration-300 group py-2"
                                     style={{ transitionDelay: `${index * 50}ms` }}
                                 >
                                     {item.name}
@@ -150,14 +150,14 @@ const Navbar = () => {
                     <div
                         ref={mobileMenuRef}
                         className="xl:hidden bg-white border-t border-slate-200 shadow-xl">
-                        <div className="container mx-auto px-8 py-6">
+                        <div className="container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6">
                             <div className="flex flex-col space-y-4">
                                 {navLinks.map((item) => (
                                     <Link
                                         key={item.name}
                                         href={item.path}
                                         onClick={() => setMobileMenuOpen(false)}
-                                        className="text-slate-700 hover:text-blue-600 font-semibold text-lg py-3 border-b border-slate-100 transition-colors"
+                                        className="text-slate-700 hover:text-blue-600 font-semibold text-base sm:text-lg py-2 sm:py-3 border-b border-slate-100 transition-colors"
                                     >
                                         {item.name}
                                     </Link>
