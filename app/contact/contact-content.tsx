@@ -1,5 +1,5 @@
 'use client'
-import { useState,useEffect } from 'react'
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 
 export default function ContactContent() {
 
@@ -11,9 +11,13 @@ export default function ContactContent() {
     email: '',
     phone: '',
     company: '',
-    industry: '',
-    message: ''
-  })
+    message: '',
+    industry: ''
+  });
+  const [status, setStatus] = useState<{
+    type: 'idle' | 'loading' | 'success' | 'error';
+    message: string;
+  }>({ type: 'idle', message: '' });
 
   useEffect(() => {
     setIsMounted(true)
@@ -21,10 +25,10 @@ export default function ContactContent() {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('mousemove', handleMouseMove)
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove)
@@ -37,20 +41,66 @@ export default function ContactContent() {
       transform: `translate(${(mousePosition.x - window.innerWidth / 2) / 50 * multiplier}px, ${(mousePosition.y - window.innerHeight / 2) / 50 * multiplier}px)`
     }
   }
+  // Input change handler
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-  }
+  // Form submit handler
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus({ type: 'loading', message: 'Sending your message...' });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      // Success!
+      setStatus({
+        type: 'success',
+        message: '✅ Thank you! We will contact you within 24 hours.',
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+        industry: ''
+      });
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setStatus({ type: 'idle', message: '' });
+      }, 5000);
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
+      });
+    }
+  };
   const contactInfo = [
     {
       icon: (
@@ -121,8 +171,8 @@ export default function ContactContent() {
       icon: '💡'
     }
   ]
-    return (
-   <div className="min-h-screen bg-white">
+  return (
+    <div className="min-h-screen bg-white">
 
       {/* Hero Section - Updated to Match Other Pages */}
       <section className="relative pt-40 pb-32 overflow-hidden">
@@ -130,18 +180,18 @@ export default function ContactContent() {
           <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 sm:px-6  lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
-              <div 
+              <div
                 className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-100"
                 style={getParallaxStyle(0.5)}
               >
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
                 <span className="text-sm font-semibold text-blue-600">We're Here to Help You</span>
               </div>
-              
+
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Let's Start</span>
                 <br />
@@ -149,13 +199,13 @@ export default function ContactContent() {
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Conversation</span>
               </h1>
-              
+
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
                 Have questions about our products or services? Our expert team is ready to provide you with the perfect chemical and LED solutions for your business needs.
               </p>
-              
+
               <div className="pt-6 flex flex-col sm:flex-row gap-4">
-                <a 
+                <a
                   href="#contact-form"
                   className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 lg:px-10 py-4  bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
@@ -164,7 +214,7 @@ export default function ContactContent() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </a>
-                <a 
+                <a
                   href="tel:+923001234567"
                   className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 lg:px-10 py-4 bg-slate-100 text-slate-900 rounded-xl font-semibold hover:bg-slate-200 transition-all duration-300"
                 >
@@ -189,12 +239,12 @@ export default function ContactContent() {
             </div>
 
             <div className="relative">
-              <div 
+              <div
                 className="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-300/50 border-8 border-white"
                 style={getParallaxStyle(1)}
               >
                 <div className="relative w-full h-[600px] bg-gradient-to-br from-slate-200 to-slate-100">
-                  <img 
+                  <img
                     src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=2074&auto=format&fit=crop"
                     alt="Contact Al-Ibrahim Group"
                     className="w-full h-full object-cover"
@@ -203,7 +253,7 @@ export default function ContactContent() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="absolute -bottom-8 -left-8 bg-white rounded-3xl p-8 shadow-2xl shadow-slate-400/30 border border-slate-100 transform hover:scale-105 hover:rotate-2 transition-all duration-500 cursor-pointer"
                 style={getParallaxStyle(-0.5)}
               >
@@ -220,7 +270,7 @@ export default function ContactContent() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="absolute -top-8 -right-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl p-6 shadow-2xl shadow-blue-500/40 transform hover:scale-105 hover:-rotate-2 transition-all duration-500"
                 style={getParallaxStyle(0.3)}
               >
@@ -258,6 +308,16 @@ export default function ContactContent() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  {status.type !== 'idle' && (
+                    <div className={`p-4 rounded-xl font-semibold ${status.type === 'success'
+                      ? 'bg-green-100 border-2 border-green-500 text-green-800'
+                      : status.type === 'error'
+                        ? 'bg-red-100 border-2 border-red-500 text-red-800'
+                        : 'bg-blue-100 border-2 border-blue-500 text-blue-800'
+                      }`}>
+                      {status.message}
+                    </div>
+                  )}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">
@@ -363,16 +423,24 @@ export default function ContactContent() {
                       placeholder="Tell us about your requirements..."
                     ></textarea>
                   </div>
-
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-1"
+                    disabled={status.type === 'loading'}
+                    className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
-                    <span>Send Message</span>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    {status.type === 'loading' ? (
+                      <span className="flex items-center justify-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      'Send Message'
+                    )}
                   </button>
+
                 </form>
               </div>
             </div>
@@ -428,24 +496,24 @@ export default function ContactContent() {
                 className="group relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-                
+
                 <div className="relative z-10 text-center">
                   <div className="text-5xl mb-6 group-hover:scale-125 transition-transform duration-500">
                     {dept.icon}
                   </div>
-                  
+
                   <h3 className="text-xl font-black text-slate-900 mb-4">
                     {dept.name}
                   </h3>
-                  
+
                   <div className="space-y-3">
-                    <a 
+                    <a
                       href={`mailto:${dept.email}`}
                       className="block text-sm text-blue-600 hover:text-blue-700 font-semibold transition-colors"
                     >
                       {dept.email}
                     </a>
-                    <a 
+                    <a
                       href={`tel:${dept.phone}`}
                       className="block text-sm text-slate-600 hover:text-slate-900 font-medium transition-colors"
                     >
@@ -482,31 +550,31 @@ export default function ContactContent() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { 
+                {
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                     </svg>
                   ),
-                  title: 'Modern Facility', 
+                  title: 'Modern Facility',
                   desc: 'State-of-the-art warehousing and testing labs'
                 },
-                { 
+                {
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                   ),
-                  title: 'Schedule Tour', 
+                  title: 'Schedule Tour',
                   desc: 'Book your facility visit in advance'
                 },
-                { 
+                {
                   icon: (
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   ),
-                  title: 'Meet the Team', 
+                  title: 'Meet the Team',
                   desc: 'Connect with our expert professionals'
                 }
               ].map((item, i) => (
@@ -543,87 +611,6 @@ export default function ContactContent() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 py-20">
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-            <div className="lg:col-span-2">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30">
-                  <span className="text-white font-black text-xl">AI</span>
-                </div>
-                <div>
-                  <span className="text-white font-black text-2xl block">AL-IBRAHIM GROUP</span>
-                  <span className="text-blue-400 text-xs font-bold tracking-wider">CHEMICAL SOLUTIONS</span>
-                </div>
-              </div>
-              <p className="text-slate-400 leading-relaxed mb-8 max-w-md">
-                Leading the chemical industry with premium quality products, exceptional service, and unwavering commitment to client success since 2010.
-              </p>
-              <div className="flex space-x-4">
-                {['in', 'f', 't'].map((social, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    <span className="font-bold">{social}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Company</h4>
-              <ul className="space-y-4">
-                {['About Us', 'Our Team', 'Careers', 'News', 'Contact'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Products</h4>
-              <ul className="space-y-4">
-                {['Industrial', 'Pharmaceutical', 'Agricultural', 'Textile', 'Construction'].map((product) => (
-                  <li key={product}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{product}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Resources</h4>
-              <ul className="space-y-4">
-                {['Documentation', 'Safety Guides', 'Case Studies', 'Blog', 'Support'].map((resource) => (
-                  <li key={resource}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{resource}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-slate-800">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-              <p className="text-slate-500 text-sm font-medium">
-                © 2026 Al-Ibrahim Group. All rights reserved.
-              </p>
-              <div className="flex space-x-8 text-sm">
-                {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-                  <a key={item} href="#" className="text-slate-500 hover:text-blue-400 transition-colors font-medium">
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
