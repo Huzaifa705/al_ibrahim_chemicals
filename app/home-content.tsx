@@ -104,10 +104,10 @@ export default function HomeContent() {
                 style={getParallaxStyle(0.5)}
               >
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-                <span className="text-sm font-semibold text-blue-600">Trusted Chemical Partner Since 2010</span>
+                <span className="text-xs sm:text-sm font-semibold text-blue-600">Trusted Chemical Partner Since 2010</span>
               </div>
 
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Global</span>
                 <br />
                 <span className="text-slate-900">Chemical</span>
@@ -115,7 +115,7 @@ export default function HomeContent() {
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Excellence</span>
               </h1>
 
-              <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
                 Al-Ibrahim Group delivers world-class chemical products with uncompromising quality standards.
                 Your trusted partner for industrial excellence across Pakistan and beyond.
               </p>
@@ -123,7 +123,7 @@ export default function HomeContent() {
               <div className="pt-6">
                 <Link
                   href="/products"
-                  className="inline-flex items-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                  className="inline-flex items-center space-x-2 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 bg-blue-600 text-white rounded-xl text-sm sm:text-base font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <span>Explore Solutions</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,8 +135,8 @@ export default function HomeContent() {
               <div className="pt-8 grid grid-cols-3 gap-6">
                 {stats.slice(0, 3).map((stat, i) => (
                   <div key={i} className="text-center lg:text-left">
-                    <div className="text-3xl font-bold text-slate-900">{stat.value}</div>
-                    <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-900">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-slate-600 font-medium">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -168,8 +168,8 @@ export default function HomeContent() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-lg font-black text-slate-900">ISO 9001:2015</div>
-                    <div className="text-sm font-bold text-slate-500">Quality Certified</div>
+                    <div className="text-base sm:text-lg font-black text-slate-900">ISO 9001:2015</div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-500">Quality Certified</div>
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function HomeContent() {
                 style={getParallaxStyle(0.3)}
               >
                 <div className="text-center">
-                  <div className="text-4xl font-black text-white mb-1">98%</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white mb-1">98%</div>
                   <div className="text-xs font-bold text-blue-100 uppercase tracking-wider">Satisfaction</div>
                 </div>
               </div>
@@ -201,12 +201,12 @@ export default function HomeContent() {
                 <span className="text-sm font-bold text-blue-700 tracking-wide">OUR LEGACY</span>
               </div>
 
-              <h2 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-slate-900 leading-tight">
                 Pioneering Innovation in Chemical Industry
               </h2>
 
               <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
-                <p className="font-medium">
+                <p className="font-medium text-base sm:text-lg text-slate-600 leading-relaxed">
                   Since 2010, Al-Ibrahim Group has established itself as a cornerstone of Pakistan's chemical distribution network, serving as the trusted bridge between global manufacturers and local industries.
                 </p>
                 <p>
@@ -224,15 +224,15 @@ export default function HomeContent() {
                   { icon: '♻️', label: 'Eco-Friendly' }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center space-x-3 px-6 py-3 bg-white rounded-xl border border-slate-200 shadow-md hover:shadow-xl hover:border-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{item.icon}</span>
-                    <span className="font-bold text-slate-700">{item.label}</span>
+                    <span className="text-xl sm:text-2xl">{item.icon}</span>
+                    <span className="text-sm sm:text-base font-bold text-slate-700">{item.label}</span>
                   </div>
                 ))}
               </div>
 
               <Link
                 href="/leadership"
-                className="inline-flex items-center space-x-3 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-500 transform hover:-translate-y-1"
+                className="inline-flex items-center space-x-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-500 transform hover:-translate-y-1"
               >
                 <span>Learn Our Story</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -266,10 +266,10 @@ export default function HomeContent() {
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-sm font-bold text-blue-700 tracking-wide">PROVEN TRACK RECORD</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
               Numbers That Speak Our Excellence
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-medium">
               Over a decade of consistent growth, unwavering quality, and client satisfaction
             </p>
           </div>
@@ -308,10 +308,10 @@ export default function HomeContent() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
 
                 <div className="relative z-10">
-                  <div className={`text-6xl lg:text-7xl font-black bg-gradient-to-br ${stat.color} bg-clip-text text-transparent mb-4`}>
+                  <div className={`text-4xl sm:text-5xl lg:text-7xl font-black bg-gradient-to-br ${stat.color} bg-clip-text text-transparent mb-4`}>
                     {stat.value}
                   </div>
-                  <div className="text-xl font-black text-slate-900 mb-3">{stat.label}</div>
+                  <div className="text-lg sm:text-xl font-black text-slate-900 mb-3">{stat.label}</div>
                   <p className="text-sm text-slate-600 leading-relaxed">{stat.desc}</p>
 
                   <div className="mt-6 h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -333,10 +333,10 @@ export default function HomeContent() {
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-sm font-bold text-blue-700 tracking-wide">COMPREHENSIVE SOLUTIONS</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
               End-to-End Chemical Services
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-medium">
               From sourcing to delivery, we handle every aspect of your chemical supply needs
             </p>
           </div>
@@ -354,10 +354,10 @@ export default function HomeContent() {
                     {service.icon}
                   </div>
 
-                  <h3 className="text-2xl font-black text-slate-900 group-hover:text-white mb-4 transition-colors duration-500">
+                  <h3 className="text-base sm:text-lg lg:text-xl text-slate-600 font-black">
                     {service.title}
                   </h3>
-                  <p className="text-slate-600 group-hover:text-white/90 leading-relaxed transition-colors duration-500">
+                  <p className="text-sm sm:text-base text-slate-600 group-hover:text-white/90 leading-relaxed transition-colors duration-500">
                     {service.description}
                   </p>
                 </div>
@@ -379,10 +379,10 @@ export default function HomeContent() {
             <div className="inline-block px-5 py-2 bg-blue-600/20 rounded-full mb-6 border border-blue-500/30">
               <span className="text-sm font-bold text-blue-300 tracking-wide">GLOBAL FOOTPRINT</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-white mb-6 leading-tight">
               Serving Industries Worldwide
             </h2>
-            <p className="text-xl text-slate-300 font-medium">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-300 font-medium">
               Our extensive distribution network ensures reliable chemical supply across continents
             </p>
           </div>
@@ -400,8 +400,8 @@ export default function HomeContent() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-black text-white mb-1">Domestic Network</h3>
-                  <p className="text-blue-300 font-semibold">Major Cities Across Pakistan</p>
+                  <h3 className="text-2xl sm:text-3xl font-black text-white mb-1">Domestic Network</h3>
+                  <p className="text-sm sm:text-base text-blue-300 font-semibold">Major Cities Across Pakistan</p>
                 </div>
               </div>
 
@@ -414,7 +414,7 @@ export default function HomeContent() {
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-blue-500/0 group-hover/item:from-blue-600/20 group-hover/item:to-blue-500/20 transition-all duration-300"></div>
                     <div className="relative flex items-center space-x-3">
                       <div className="w-3 h-3 min-w-[12px] min-h-[12px] bg-blue-400 rounded-full group-hover/item:scale-150 group-hover/item:bg-blue-300 transition-all duration-300 shadow-lg shadow-blue-500/50"></div>
-                      <span className="text-slate-200 font-bold text-base sm:text-lg group-hover/item:text-white transition-colors truncate">{city}</span>
+                      <span className="text-sm sm:text-base lg:text-lg text-slate-200 font-bold group-hover/item:text-white transition-colors truncate">{city}</span>
                     </div>
                   </div>
                 ))}
@@ -432,8 +432,8 @@ export default function HomeContent() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-black text-white mb-1">Import Partners</h3>
-                  <p className="text-blue-300 font-semibold">Strategic Global Suppliers</p>
+                  <h3 className="text-2xl sm:text-3xl font-black text-white mb-1">Import Partners</h3>
+                  <p className="text-sm sm:text-base text-blue-300 font-semibold">Strategic Global Suppliers</p>
                 </div>
               </div>
 
@@ -446,7 +446,7 @@ export default function HomeContent() {
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-blue-500/0 group-hover/item:from-blue-600/20 group-hover/item:to-blue-500/20 transition-all duration-300"></div>
                     <div className="relative flex items-center space-x-3">
                       <div className="w-3 h-3 min-w-[12px] min-h-[12px] bg-blue-400 rounded-full group-hover/item:scale-150 group-hover/item:bg-blue-300 transition-all duration-300 shadow-lg shadow-blue-500/50"></div>
-                      <span className="text-slate-200 font-bold text-base sm:tex-lg group-hover/item:text-white transition-colors truncate">{country}</span>
+                      <span className="text-sm sm:text-base lg:text-lg text-slate-200 font-bold group-hover/item:text-white transition-colors truncate">{country}</span>
                     </div>
                   </div>
                 ))}
@@ -473,11 +473,11 @@ export default function HomeContent() {
                   <span className="text-sm font-bold text-white tracking-wide">CLIENT EXCELLENCE</span>
                 </div>
 
-                <h2 className="text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
                   How We Take Care of Our Valuable Clients
                 </h2>
 
-                <p className="text-xl lg:text-2xl text-blue-50 mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
+                <p className="text-base sm:text-lg lg:text-2xl text-blue-50 mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
                   At Al-Ibrahim Group, every client relationship is built on trust, transparency, and exceptional service.
                   We don't just deliver chemicals—we deliver peace of mind, reliability, and partnership that drives your success forward.
                 </p>
@@ -516,18 +516,18 @@ export default function HomeContent() {
                       <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white group-hover:scale-110 group-hover:bg-white/30 transition-all duration-500">
                         {item.icon}
                       </div>
-                      <div className="text-xl font-black text-white mb-3">{item.title}</div>
-                      <div className="text-blue-50 leading-relaxed">{item.desc}</div>
+                      <div className="text-lg sm:text-xl font-black text-white mb-3">{item.title}</div>
+                      <div className="text-sm sm:text-base text-blue-50 leading-relaxed">{item.desc}</div>
                     </div>
                   ))}
                 </div>
 
                 <div className="inline-block bg-white rounded-[2.5rem] px-16 py-12 shadow-2xl shadow-blue-900/30 transform hover:scale-105 transition-all duration-500">
-                  <div className="text-8xl lg:text-9xl font-black bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-4">
+                  <div className="text-6xl sm:text-7xl lg:text-9xl font-black bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-4">
                     98%
                   </div>
-                  <div className="text-2xl lg:text-3xl font-black text-slate-900 mb-2">Customer Satisfaction</div>
-                  <div className="text-slate-600 font-semibold">Based on 500+ client feedback surveys and retention metrics</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 mb-2">Customer Satisfaction</div>
+                  <div className="text-sm sm:text-base text-slate-600 font-semibold">Based on 500+ client feedback surveys and retention metrics</div>
                 </div>
               </div>
             </div>
@@ -545,18 +545,18 @@ export default function HomeContent() {
                   <span className="text-sm font-bold text-blue-700 tracking-wide">GET IN TOUCH</span>
                 </div>
 
-                <h2 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-slate-900 leading-tight">
                   Ready to Partner with Industry Leaders?
                 </h2>
 
-                <p className="text-xl text-slate-600 leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
                   Join hundreds of satisfied clients who trust Al-Ibrahim Group for their chemical supply needs.
                   Let's discuss how our comprehensive solutions can drive your business forward.
                 </p>
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
+                  className="inline-flex items-center space-x-3 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
                 >
                   <span>Request Consultation</span>
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -612,7 +612,7 @@ export default function HomeContent() {
                       </div>
                       <div>
                         <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">{item.label}</div>
-                        <div className="text-slate-900 font-bold">{item.value}</div>
+                        <div className="text-sm sm:text-base text-slate-900 font-bold">{item.value}</div>
                       </div>
                     </div>
                   </div>
@@ -622,87 +622,6 @@ export default function HomeContent() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 py-20">
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-            <div className="lg:col-span-2">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30">
-                  <span className="text-white font-black text-xl">AI</span>
-                </div>
-                <div>
-                  <span className="text-white font-black text-2xl block">AL-IBRAHIM GROUP</span>
-                  <span className="text-blue-400 text-xs font-bold tracking-wider">CHEMICAL SOLUTIONS</span>
-                </div>
-              </div>
-              <p className="text-slate-400 leading-relaxed mb-8 max-w-md">
-                Leading the chemical industry with premium quality products, exceptional service, and unwavering commitment to client success since 2010.
-              </p>
-              <div className="flex space-x-4">
-                {['in', 'f', 't'].map((social, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    <span className="font-bold">{social}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Company</h4>
-              <ul className="space-y-4">
-                {['About Us', 'Our Team', 'Careers', 'News', 'Contact'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Products</h4>
-              <ul className="space-y-4">
-                {['Industrial', 'Pharmaceutical', 'Agricultural', 'Textile', 'Construction'].map((product) => (
-                  <li key={product}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{product}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Resources</h4>
-              <ul className="space-y-4">
-                {['Documentation', 'Safety Guides', 'Case Studies', 'Blog', 'Support'].map((resource) => (
-                  <li key={resource}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{resource}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-slate-800">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-              <p className="text-slate-500 text-sm font-medium">
-                © 2026 Al-Ibrahim Group. All rights reserved.
-              </p>
-              <div className="flex space-x-8 text-sm">
-                {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-                  <a key={item} href="#" className="text-slate-500 hover:text-blue-400 transition-colors font-medium">
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
