@@ -115,7 +115,7 @@ export default function LeadershipContent() {
                 <span className="text-sm font-semibold text-blue-600">Visionary Leadership Since 2010</span>
               </div>
               
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Meet Our</span>
                 <br />
                 <span className="text-slate-900">Visionary</span>
@@ -123,7 +123,7 @@ export default function LeadershipContent() {
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Leader</span>
               </h1>
               
-              <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
                 Guided by expertise, driven by excellence, committed to innovation. 
                 Muhammad Ibrahim has transformed Pakistan's chemical industry through visionary leadership and unwavering dedication.
               </p>
@@ -131,7 +131,7 @@ export default function LeadershipContent() {
               <div className="pt-6">
                 <Link 
                   href="/contact"
-                  className="inline-flex items-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                  className="inline-flex items-center space-x-2 px-6 py-3 md:px-10 md:py-4 bg-blue-600 text-white text-sm md:text-base rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <span>Connect With Us</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,8 +146,8 @@ export default function LeadershipContent() {
                   { value: '500+', label: 'Partnerships' }
                 ].map((stat, i) => (
                   <div key={i} className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                    <div className="text-3xl font-bold text-slate-900">{stat.value}</div>
-                    <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+                    <div className="text-2xl md:text-3xl font-bold text-slate-900">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-slate-600 font-medium">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -168,8 +168,8 @@ export default function LeadershipContent() {
                   
                   <div className="absolute bottom-8 left-8 right-8">
                     <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20">
-                      <h3 className="text-2xl font-black text-white mb-1">Muhammad Ibrahim</h3>
-                      <p className="text-lg font-bold text-blue-200">Founder & CEO</p>
+                      <h3 className="text-xl md:text-2xl font-black text-white mb-1">Muhammad Ibrahim</h3>
+                      <p className="text-base md:text-lg font-bold text-blue-200">Founder & CEO</p>
                     </div>
                   </div>
                 </div>
@@ -186,8 +186,8 @@ export default function LeadershipContent() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-lg font-black text-slate-900">Award Winning</div>
-                    <div className="text-sm font-bold text-slate-500">Industry Leader</div>
+                    <div className="text-base md:text-lg font-black text-slate-900">Award Winning</div>
+                    <div className="text-xs md:text-sm font-bold text-slate-500">Industry Leader</div>
                   </div>
                 </div>
               </div>
@@ -197,8 +197,8 @@ export default function LeadershipContent() {
                 style={getParallaxStyle(0.3)}
               >
                 <div className="text-center">
-                  <div className="text-4xl font-black text-white mb-1">14+</div>
-                  <div className="text-xs font-bold text-blue-100 uppercase tracking-wider">Industries Served</div>
+                  <div className="text-2xl md:text-4xl font-black text-white mb-1">14+</div>
+                  <div className="text-[10px] md:text-xs font-bold text-blue-100 uppercase tracking-wider">Industries Served</div>
                 </div>
               </div>
             </div>
@@ -218,12 +218,12 @@ export default function LeadershipContent() {
               <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
                 <span className="text-sm font-bold text-blue-700 tracking-wide">LEADERSHIP PROFILE</span>
               </div>
-              <h2 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
                 Transforming Industries Through Vision
               </h2>
             </div>
 
-            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+            <div className="space-y-6 text-sm md:text-base lg:text-lg text-slate-600 leading-relaxed">
               <p className="font-medium">
                 Muhammad Ibrahim, the visionary founder and CEO of Al-Ibrahim Group, has been at the forefront of Pakistan's chemical industry transformation since 2010.
               </p>
@@ -246,10 +246,10 @@ export default function LeadershipContent() {
                 { value: '98%', label: 'Client Satisfaction' }
               ].map((stat, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300 text-center">
-                  <div className="text-4xl font-black bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-2">
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-sm font-bold text-slate-600">{stat.label}</div>
+                  <div className="text-xs md:text-sm font-bold text-slate-600">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -264,10 +264,10 @@ export default function LeadershipContent() {
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-sm font-bold text-blue-700 tracking-wide">OUR PRINCIPLES</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
               Core Values That Drive Success
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
+            <p className="text-base md:text-lg lg:text-xl text-slate-600 font-medium">
               Core values and principles that guide every decision and action we take
             </p>
           </div>
@@ -281,14 +281,14 @@ export default function LeadershipContent() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 
                 <div className="relative z-10">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl text-white mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                  <div className={`inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${value.color} rounded-2xl text-white mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
                     {value.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-black text-slate-900 group-hover:text-white mb-4 transition-colors duration-500">
+                  <h3 className="text-xl md:text-2xl font-black text-slate-900 group-hover:text-white mb-4 transition-colors duration-500">
                     {value.title}
                   </h3>
-                  <p className="text-slate-600 group-hover:text-white/90 leading-relaxed transition-colors duration-500">
+                  <p className="text-sm md:text-base text-slate-600 group-hover:text-white/90 leading-relaxed transition-colors duration-500">
                     {value.desc}
                   </p>
                 </div>
@@ -312,7 +312,7 @@ export default function LeadershipContent() {
               <div className="flex items-center space-x-4 mb-8">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl blur-xl opacity-50"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/30">
+                  <div className="relative w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/30">
                     <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -320,12 +320,12 @@ export default function LeadershipContent() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-black text-white mb-1">Our Vision</h3>
-                  <p className="text-blue-300 font-semibold">Where We're Headed</p>
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-1">Our Vision</h3>
+                  <p className="text-sm md:text-base text-blue-300 font-semibold">Where We're Headed</p>
                 </div>
               </div>
 
-              <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+              <div className="space-y-6 text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed">
                 <p className="font-medium text-slate-200">
                   To become the leading chemical distribution company in South Asia, recognized globally for our commitment to quality, innovation, and sustainable business practices.
                 </p>
@@ -340,19 +340,19 @@ export default function LeadershipContent() {
               <div className="flex items-center space-x-4 mb-8">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl blur-xl opacity-50"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/30">
+                  <div className="relative w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/30">
                     <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-black text-white mb-1">Our Mission</h3>
-                  <p className="text-blue-300 font-semibold">What Drives Us Daily</p>
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-1">Our Mission</h3>
+                  <p className="text-sm md:text-base text-blue-300 font-semibold">What Drives Us Daily</p>
                 </div>
               </div>
 
-              <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+              <div className="space-y-6 text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed">
                 <p className="font-medium text-slate-200">
                   To provide premium-quality chemical products and comprehensive solutions that empower industries, while maintaining the highest standards of safety, ethics, and environmental responsibility.
                 </p>
@@ -375,18 +375,18 @@ export default function LeadershipContent() {
                   <span className="text-sm font-bold text-blue-700 tracking-wide">WORK WITH US</span>
                 </div>
 
-                <h2 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
                   Partner With Industry Leaders
                 </h2>
 
-                <p className="text-xl text-slate-600 leading-relaxed">
+                <p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed">
                   Join forces with a team that understands your needs and delivers exceptional results. 
                   Let's build success together.
                 </p>
 
                 <Link 
                   href="/contact"
-                  className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
+                  className="inline-flex items-center space-x-3 px-6 py-3 md:px-10 md:py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-base md:text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
                 >
                   <span>Get In Touch</span>
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -403,11 +403,11 @@ export default function LeadershipContent() {
                   { icon: '🏆', label: 'Industry Leadership', desc: 'Market pioneer status' }
                 ].map((item, i) => (
                   <div key={i} className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 group">
-                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-3xl md:text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                       {item.icon}
                     </div>
-                    <div className="text-lg font-black text-slate-900 mb-2">{item.label}</div>
-                    <div className="text-sm text-slate-600">{item.desc}</div>
+                    <div className="text-base md:text-lg font-black text-slate-900 mb-2">{item.label}</div>
+                    <div className="text-xs md:text-sm text-slate-600">{item.desc}</div>
                   </div>
                 ))}
               </div>
