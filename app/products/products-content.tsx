@@ -140,14 +140,14 @@ export default function ProductsContent() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
               <div
-                className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-100"
+                className="inline-flex items-center space-x-1.5 sm:space-x-2 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-blue-50 rounded-full border border-blue-100"
                 style={getParallaxStyle(0.5)}
               >
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-                <span className="text-sm font-semibold text-blue-600">Premium Chemical Distribution Since 2010</span>
+                <span className="text-xs sm:text-sm font-semibold text-blue-600">Premium Chemical Distribution Since 2010</span>
               </div>
 
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight">
                 <span className="text-slate-900">Industrial</span>
                 <br />
                 <span className="text-slate-900">Chemical</span>
@@ -155,7 +155,7 @@ export default function ProductsContent() {
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Solutions</span>
               </h1>
 
-              <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 leading-relaxed">
                 Comprehensive chemical solutions across 14+ industries since 2010.
                 Al-Ibrahim Group delivers premium-quality products with unmatched reliability.
               </p>
@@ -163,7 +163,7 @@ export default function ProductsContent() {
               <div className="pt-6">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                  className="inline-flex items-center space-x-2 px-6 py-3 sm:px-8 sm:py-3.5 md:px-10 md:py-4 text-sm sm:text-base bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <span>Request Quote</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,8 +179,8 @@ export default function ProductsContent() {
                   { value: '100%', label: 'Quality' }
                 ].map((stat, i) => (
                   <div key={i} className="text-center lg:text-left">
-                    <div className="text-3xl font-bold text-slate-900">{stat.value}</div>
-                    <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-900 ">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-slate-600 font-medium">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -212,8 +212,8 @@ export default function ProductsContent() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-lg font-black text-slate-900">ISO Certified</div>
-                    <div className="text-sm font-bold text-slate-500">Quality Assured</div>
+                    <div className="text-base sm:text-lg font-black text-slate-900">ISO Certified</div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-500">Quality Assured</div>
                   </div>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function ProductsContent() {
                 style={getParallaxStyle(0.3)}
               >
                 <div className="text-center">
-                  <div className="text-4xl font-black text-white mb-1">14+</div>
+                  <div className="text-3xl sm:text-4xl font-black text-white mb-1 ">14+</div>
                   <div className="text-xs font-bold text-blue-100 uppercase tracking-wider">Industries</div>
                 </div>
               </div>
@@ -244,18 +244,18 @@ export default function ProductsContent() {
               <span className="text-sm font-bold text-blue-700 tracking-wide">ABOUT OUR PRODUCTS</span>
             </div>
 
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 md:mb-10 text-center">
               Pakistan's Premier Chemical Distributor
             </h2>
 
             <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
-              <p className="font-medium">
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
                 Al-Ibrahim Group has established itself as Pakistan's premier chemical distribution company, serving diverse industries with premium-quality products and unmatched reliability.
               </p>
-              <p>
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
                 We specialize in supplying both liquid and powder chemicals sourced from leading global manufacturers. Our extensive product portfolio caters to manufacturing, processing, and industrial applications across 14+ specialized sectors.
               </p>
-              <p>
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
                 With state-of-the-art storage facilities, rigorous quality control processes, and a commitment to timely delivery, we ensure that your production never stops.
               </p>
             </div>
@@ -264,16 +264,16 @@ export default function ProductsContent() {
       </section>
 
       {/* Product Types */}
-      <section className="py-24 lg:py-32 bg-white">
+      <section className="py-12 lg:py-32 bg-white">
         <div className="container mx-auto px-8 lg:px-16">
           <div className="text-center max-w-4xl mx-auto mb-20">
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-sm font-bold text-blue-700 tracking-wide">PRODUCT RANGE</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-center">
               Liquid & Powder Chemicals
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 text-center mb-6 sm:mb-8 md:mb-10">
               We supply both liquid and powder chemicals tailored to your industry specifications
             </p>
           </div>
@@ -291,8 +291,8 @@ export default function ProductsContent() {
                     {type.icon}
                   </div>
 
-                  <h3 className="text-3xl font-black text-slate-900 mb-4">{type.title}</h3>
-                  <p className="text-lg text-slate-600 leading-relaxed">{type.description}</p>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-black mb-3 sm:mb-4 text-slate-900">{type.title}</h3>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{type.description}</p>
                 </div>
               </div>
             ))}
@@ -307,10 +307,10 @@ export default function ProductsContent() {
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-sm font-bold text-blue-700 tracking-wide">INDUSTRIES WE SERVE</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-center text-slate-900">
               Powering 14+ Industries
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 text-center mb-6 sm:mb-8 md:mb-10">
               From pharmaceuticals to construction, we power the industries that drive economic growth
             </p>
           </div>
@@ -324,11 +324,11 @@ export default function ProductsContent() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${sector.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
 
                 <div className="relative z-10 text-center">
-                  <div className="text-5xl mb-6 group-hover:scale-125 transition-transform duration-500">
+                  <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-125 transition-transform duration-500">
                     {sector.icon}
                   </div>
 
-                  <h3 className="text-xl font-black text-slate-900 group-hover:text-white mb-3 transition-colors duration-500">
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-white mb-2 sm:mb-3 transition-colors duration-500">
                     {sector.name}
                   </h3>
                   <p className="text-sm text-slate-600 group-hover:text-white/90 leading-relaxed transition-colors duration-500">
@@ -354,11 +354,11 @@ export default function ProductsContent() {
               <span className="text-sm font-bold text-white tracking-wide">QUALITY COMMITMENT</span>
             </div>
 
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 sm:mb-8 leading-tight">
               International Quality Standards
             </h2>
 
-            <p className="text-xl lg:text-2xl text-blue-50 mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-50 mb-8 sm:mb-12 md:mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
               Every product in our portfolio undergoes rigorous quality control and testing to ensure compliance with international standards.
               Our partnerships with world-leading manufacturers guarantee authenticity and consistency.
             </p>
@@ -397,8 +397,8 @@ export default function ProductsContent() {
                   <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white group-hover:scale-110 group-hover:bg-white/30 transition-all duration-500">
                     {item.icon}
                   </div>
-                  <div className="text-xl font-black text-white mb-3">{item.title}</div>
-                  <div className="text-blue-50 leading-relaxed">{item.desc}</div>
+                  <div className="text-lg sm:text-xl font-black text-white mb-2 sm:mb-3">{item.title}</div>
+                  <div className="text-sm sm:text-base text-blue-50 leading-relaxed">{item.desc}</div>
                 </div>
               ))}
             </div>
@@ -408,26 +408,26 @@ export default function ProductsContent() {
 
       {/* CTA Section */}
       <section className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-white">
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="max-w-6xl mx-auto bg-white rounded-[3rem] shadow-2xl shadow-slate-300/50 border-2 border-slate-100 overflow-hidden">
-            <div className="grid lg:grid-cols-5 gap-12 items-center p-12 lg:p-16">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
+          <div className="max-w-6xl mx-auto bg-white rounded-2xl sm:rounded-3xl lg:rounded-[3rem] shadow-2xl shadow-slate-300/50 border-2 border-slate-100 overflow-hidden">
+            <div className="grid lg:grid-cols-5gap-6 md:gap-8 lg:gap-12 items-center p-6 sm:p-8 md:p-12 lg:p-16">
               <div className="lg:col-span-3 space-y-8">
                 <div className="inline-block px-5 py-2 bg-blue-100 rounded-full">
                   <span className="text-sm font-bold text-blue-700 tracking-wide">GET IN TOUCH</span>
                 </div>
 
-                <h2 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
                   Need Specific Chemicals?
                 </h2>
 
-                <p className="text-xl text-slate-600 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
                   Get in touch with our team to discuss your specific requirements and receive a customized quote.
                   We're here to support your manufacturing success.
                 </p>
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
+                  className="inline-flex items-center space-x-3 px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 mb-4"
                 >
                   <span>Request Custom Quote</span>
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -436,19 +436,19 @@ export default function ProductsContent() {
                 </Link>
               </div>
 
-              <div className="lg:col-span-2 grid grid-cols-1 gap-5">
+              <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 md:gap-5">
                 {[
                   { icon: '📦', label: 'Bulk Orders' },
                   { icon: '🚚', label: 'Fast Delivery' },
                   { icon: '💰', label: 'Best Prices' },
                   { icon: '🔬', label: 'Lab Tested' }
                 ].map((item, i) => (
-                  <div key={i} className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 group">
+                  <div key={i} className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl  p-4 sm:p-5 md:p-6 border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 group">
                     <div className="flex items-center space-x-4">
-                      <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
+                      <div className="text-3xl sm:text-4xl group-hover:scale-110 transition-transform duration-300">
                         {item.icon}
                       </div>
-                      <div className="text-xl font-bold text-slate-900">{item.label}</div>
+                      <div className="text-base sm:text-lg md:text-xl font-bold text-slate-900">{item.label}</div>
                     </div>
                   </div>
                 ))}
@@ -458,86 +458,8 @@ export default function ProductsContent() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 py-20">
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-            <div className="lg:col-span-2">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/30">
-                  <span className="text-white font-black text-xl">AI</span>
-                </div>
-                <div>
-                  <span className="text-white font-black text-2xl block">AL-IBRAHIM GROUP</span>
-                  <span className="text-blue-400 text-xs font-bold tracking-wider">CHEMICAL SOLUTIONS</span>
-                </div>
-              </div>
-              <p className="text-slate-400 leading-relaxed mb-8 max-w-md">
-                Leading the chemical industry with premium quality products, exceptional service, and unwavering commitment to client success since 2010.
-              </p>
-              <div className="flex space-x-4">
-                {['in', 'f', 't'].map((social, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    <span className="font-bold">{social}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Company</h4>
-              <ul className="space-y-4">
-                {['About Us', 'Our Team', 'Careers', 'News', 'Contact'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Products</h4>
-              <ul className="space-y-4">
-                {['Industrial', 'Pharmaceutical', 'Agricultural', 'Textile', 'Construction'].map((product) => (
-                  <li key={product}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{product}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-black mb-6 text-lg">Resources</h4>
-              <ul className="space-y-4">
-                {['Documentation', 'Safety Guides', 'Case Studies', 'Blog', 'Support'].map((resource) => (
-                  <li key={resource}>
-                    <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors font-medium">{resource}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-slate-800">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-              <p className="text-slate-500 text-sm font-medium">
-                © 2026 Al-Ibrahim Group. All rights reserved.
-              </p>
-              <div className="flex space-x-8 text-sm">
-                {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-                  <a key={item} href="#" className="text-slate-500 hover:text-blue-400 transition-colors font-medium">
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+    
+     
     </div>
   )
 }
