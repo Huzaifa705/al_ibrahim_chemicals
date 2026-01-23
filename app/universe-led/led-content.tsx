@@ -160,14 +160,14 @@ export default function UniverseLedContent() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
               <div
-                className="inline-flex items-center space-x-1.5 sm:space-x-2 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-blue-50 rounded-full border border-blue-100"
+                className="inline-flex items-center space-x-1.5 sm:space-x-2 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-blue-50 rounded-full border border-blue-100 text-xs sm:text-sm"
                 style={getParallaxStyle(0.5)}
               >
                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
                 <span className="text-sm font-semibold text-blue-600">Universe LED - Premium Lighting Solutions</span>
               </div>
 
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Illuminate</span>
                 <br />
                 <span className="text-slate-900">Your World</span>
@@ -175,15 +175,14 @@ export default function UniverseLedContent() {
                 <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">With LED</span>
               </h1>
 
-              <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
-                Universe LED delivers cutting-edge LED lighting solutions using the latest technology.
-                We guarantee quality products at the best prices with extended lifecycles built on the highest quality standards.
+              <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl">
+             Universe LED, another key venture of the group, specializes in the import and supply of LED products, providing a wide range of modern and energy-efficient LED solutions. The company is committed to delivering innovative lighting products that combine performance, durability, and sustainability. By keeping pace with evolving technology and market trends, Universe LED aims to support energy conservation while offering reliable lighting solutions for residential, commercial, and industrial applications.
               </p>
 
               <div className="pt-6">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                  className="inline-flex items-center space-x-2 px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <span>Get Quote</span>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -196,7 +195,7 @@ export default function UniverseLedContent() {
                 {features.slice(0, 2).map((feature, i) => (
                   <div key={i} className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
                     <div className="text-3xl mb-3">{feature.icon}</div>
-                    <div className="text-lg font-bold text-slate-900">{feature.title}</div>
+                    <div className="text-base sm:text-lg font-bold text-slate-900">{feature.title}</div>
                   </div>
                 ))}
               </div>
@@ -228,8 +227,8 @@ export default function UniverseLedContent() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-lg font-black text-slate-900">50,000+ Hours</div>
-                    <div className="text-sm font-bold text-slate-500">Lifespan Guarantee</div>
+                    <div className="text-base sm:text-lg font-black text-slate-900">50,000+ Hours</div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-500">Lifespan Guarantee</div>
                   </div>
                 </div>
               </div>
@@ -239,7 +238,7 @@ export default function UniverseLedContent() {
                 style={getParallaxStyle(0.3)}
               >
                 <div className="text-center">
-                  <div className="text-4xl font-black text-white mb-1">80%</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1">80%</div>
                   <div className="text-xs font-bold text-blue-100 uppercase tracking-wider">Energy Saving</div>
                 </div>
               </div>
@@ -255,7 +254,7 @@ export default function UniverseLedContent() {
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-sm font-bold text-blue-700 tracking-wide">OUR PRODUCTS</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
               Premium LED Solutions
             </h2>
             <p className="text-xl text-slate-600 font-medium">
@@ -276,10 +275,10 @@ export default function UniverseLedContent() {
                     {product.icon}
                   </div>
 
-                  <h3 className="text-2xl font-black text-slate-900 group-hover:text-white mb-2 transition-colors duration-500">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-white mb-2 transition-colors duration-500">
                     {product.name}
                   </h3>
-                  <div className="text-lg font-bold text-blue-600 group-hover:text-white/90 mb-4 transition-colors duration-500">
+                  <div className="text-base sm:text-lg font-bold text-blue-600 group-hover:text-white/90 mb-4 transition-colors duration-500">
                     {product.power}
                   </div>
                   <p className="text-slate-600 group-hover:text-white/90 leading-relaxed transition-colors duration-500">
@@ -299,10 +298,10 @@ export default function UniverseLedContent() {
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-sm font-bold text-blue-700 tracking-wide">WHY CHOOSE US</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
               Superior LED Technology
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 font-medium">
               All our LED products undergo rigorous quality control and testing procedures
             </p>
           </div>
@@ -317,7 +316,7 @@ export default function UniverseLedContent() {
 
                 <div className="relative z-10 text-center">
                   <div className="text-6xl mb-6">{feature.icon}</div>
-                  <div className="text-2xl font-black text-slate-900 mb-4">{feature.title}</div>
+                  <div className="text-xl sm:text-2xl font-black text-slate-900 mb-4">{feature.title}</div>
                   <p className="text-slate-600 leading-relaxed">{feature.description}</p>
                 </div>
               </div>
@@ -339,11 +338,11 @@ export default function UniverseLedContent() {
               <span className="text-sm font-bold text-white tracking-wide">QUALITY GUARANTEE</span>
             </div>
 
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
               Certified Quality You Can Trust
             </h2>
 
-            <p className="text-xl lg:text-2xl text-blue-50 mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-50 mb-16 leading-relaxed max-w-4xl mx-auto font-medium">
               We use the latest technology to guarantee superior performance, durability, and energy efficiency.
               All products come with extended warranties and have lifecycles measured in years, not months.
             </p>
@@ -355,8 +354,8 @@ export default function UniverseLedContent() {
                 { value: '100%', label: 'Quality Tested' }
               ].map((stat, i) => (
                 <div key={i} className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-500">
-                  <div className="text-6xl font-black text-white mb-3">{stat.value}</div>
-                  <div className="text-xl font-bold text-blue-50">{stat.label}</div>
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3">{stat.value}</div>
+                  <div className="text-base sm:text-lg md:text-xl font-bold text-blue-50">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -374,18 +373,18 @@ export default function UniverseLedContent() {
                   <span className="text-sm font-bold text-blue-700 tracking-wide">GET STARTED</span>
                 </div>
 
-                <h2 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
                   Ready to Switch to LED?
                 </h2>
 
-                <p className="text-xl text-slate-600 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed">
                   Contact us today for customized LED solutions and expert consultation.
                   Our team is ready to help you find the perfect lighting solution for your needs.
                 </p>
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
+                  className="inline-flex items-center space-x-3 px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-2xl font-bold text-base sm:text-lg  hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
                 >
                   <span>Contact Us Today</span>
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
