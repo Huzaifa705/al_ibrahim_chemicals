@@ -88,7 +88,7 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Leadership', path: '/leadership' },
-        { name: 'Products', path: '/products' },
+        { name: 'Ibrahim Chemicals', path: '/ibrahim-chemical' },
         { name: 'Universe', path: '/universe-led' },
         { name: 'Contact', path: '/contact' }
     ]
@@ -110,8 +110,8 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <div>
-                                <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-                                    AL-IBRAHIM GROUP
+                                <h1 className="text-md sm:text-xl md:text-lg lg:text-2xl font-semibold text-slate-900 tracking-tight">
+                                    AL-Ibrahim Group of Companies
                                 </h1>
                                 <p className="text-[10px] sm:text-xs text-slate-500 font-semibold tracking-wide">CHEMICAL EXCELLENCE SINCE 2010</p>
                             </div>

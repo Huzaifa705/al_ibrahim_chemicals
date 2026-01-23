@@ -124,8 +124,7 @@ export default function LeadershipContent() {
               </h1>
               
               <p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
-                Guided by expertise, driven by excellence, committed to innovation. 
-                Muhammad Ibrahim has transformed Pakistan's chemical industry through visionary leadership and unwavering dedication.
+        Muhammad Ibrahim Peerzada, born on 22 December 1972, is the founder and owner of the Al-Ibrahim Group of Companies. With a strong entrepreneurial vision and commitment to excellence, he laid the foundation of his business empire in 2010. Through determination, integrity, and strategic leadership, he has successfully built and expanded a diversified group of companies serving multiple industries. His leadership philosophy focuses on long-term growth, ethical business practices, and building strong, trusted relationships with partners and clients.
               </p>
               
               <div className="pt-6">
@@ -242,7 +241,7 @@ export default function LeadershipContent() {
               {[
                 { value: '15+', label: 'Years Experience' },
                 { value: '14+', label: 'Industries Served' },
-                { value: '500+', label: 'Global Partners' },
+                { value: '2 00+', label: 'Global Partners' },
                 { value: '98%', label: 'Client Satisfaction' }
               ].map((stat, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300 text-center">

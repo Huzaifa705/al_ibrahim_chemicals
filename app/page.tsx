@@ -116,7 +116,7 @@
 
 //               <div className="pt-6">
 //                 <Link
-//                   href="/products"
+//                   href="/ibrahim-chemical"
 //                   className="inline-flex items-center space-x-2 px-10 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
 //                 >
 //                   <span>Explore Solutions</span>
@@ -731,7 +731,7 @@ export default function Home() {
             "url": "https://al-ibrahim-chemicals.vercel.app",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://al-ibrahim-chemicals.vercel.app/products?search={search_term_string}",
+              "target": "https://al-ibrahim-chemicals.vercel.app/ibrahim-chemical?search={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })

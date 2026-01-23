@@ -147,7 +147,7 @@ export default function ProductsContent() {
                 <span className="text-xs sm:text-sm font-semibold text-blue-600">Premium Chemical Distribution Since 2010</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
                 <span className="text-slate-900">Industrial</span>
                 <br />
                 <span className="text-slate-900">Chemical</span>
@@ -156,8 +156,6 @@ export default function ProductsContent() {
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 leading-relaxed">
-                Comprehensive chemical solutions across 14+ industries since 2010.
-                Al-Ibrahim Group delivers premium-quality products with unmatched reliability.
               </p>
 
               <div className="pt-6">

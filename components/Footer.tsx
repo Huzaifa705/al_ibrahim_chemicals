@@ -13,7 +13,7 @@ function Footer() {
                   <span className="text-white font-black text-xl">AI</span>
                 </div>
                 <div>
-                  <span className="text-white font-black text-xl sm:text-2xl block">AL-IBRAHIM GROUP</span>
+                  <span className="text-white font-semibold text-xl sm:text-2xl block">AL-Ibrahim Group of Companies</span>
                   <span className="text-blue-400 text-xs font-bold tracking-wider">CHEMICAL SOLUTIONS</span>
                 </div>
               </div>
@@ -34,7 +34,7 @@ function Footer() {
             </div>
 
             <div>
-              <h4 className="text-white font-black mb-4 sm:mb-6 text-base sm:text-lg">Company</h4>
+              <h4 className="text-white font-semibold mb-4 sm:mb-6 text-base sm:text-lg">Company</h4>
               <ul className="space-y-4">
                 {['About Us', 'Our Team', 'Careers', 'News', 'Contact'].map((link) => (
                   <li key={link}>
@@ -45,7 +45,7 @@ function Footer() {
             </div>
 
             <div>
-              <h4 className="text-white font-black mb-6 text-lg">Products</h4>
+              <h4 className="text-white font-semibold mb-6 text-lg">Products</h4>
               <ul className="space-y-4">
                 {['Industrial', 'Pharmaceutical', 'Agricultural', 'Textile', 'Construction'].map((product) => (
                   <li key={product}>
@@ -56,7 +56,7 @@ function Footer() {
             </div>
 
             <div>
-              <h4 className="text-white font-black mb-6 text-lg">Resources</h4>
+              <h4 className="text-white font-semibold mb-6 text-lg">Resources</h4>
               <ul className="space-y-4">
                 {['Documentation', 'Safety Guides', 'Case Studies', 'Blog', 'Support'].map((resource) => (
                   <li key={resource}>
