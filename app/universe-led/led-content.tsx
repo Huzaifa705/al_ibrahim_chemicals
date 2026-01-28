@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState,useEffect } from 'react'
+import ProductCatalog from './ProductCatalog'
 
 export default function UniverseLedContent() {
    const [scrolled, setScrolled] = useState(false)
@@ -250,19 +251,9 @@ export default function UniverseLedContent() {
       {/* Products Grid */}
       <section className="py-24 lg:py-32 bg-slate-50">
         <div className="container mx-auto px-8 lg:px-16">
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
-              <span className="text-sm font-bold text-blue-700 tracking-wide">OUR PRODUCTS</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
-              Premium LED Solutions
-            </h2>
-            <p className="text-xl text-slate-600 font-medium">
-              High-quality lighting solutions for every need, powered by cutting-edge technology
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+<ProductCatalog/>
+          {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product, index) => (
               <div
                 key={index}
@@ -287,7 +278,7 @@ export default function UniverseLedContent() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
