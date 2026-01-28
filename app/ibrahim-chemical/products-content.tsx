@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import ChemicalCatalog from "@/components/ChemicalCatalog"
 
 export default function ProductsContent() {
  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -262,7 +263,7 @@ export default function ProductsContent() {
       </section>
 
       {/* Product Types */}
-      <section className="py-12 lg:py-32 bg-white">
+      {/* <section className="py-12 lg:py-32 bg-white">
         <div className="container mx-auto px-8 lg:px-16">
           <div className="text-center max-w-4xl mx-auto mb-20">
             <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
@@ -296,7 +297,8 @@ export default function ProductsContent() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+      <ChemicalCatalog/>
 
       {/* Industries Section */}
       <section className="py-24 lg:py-32 bg-slate-50">
