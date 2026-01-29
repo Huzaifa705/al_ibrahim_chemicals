@@ -1,5 +1,7 @@
 'use client'
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
+import { Building2, Beaker, Lightbulb, Users } from 'lucide-react'
+
 
 export default function ContactContent() {
 
@@ -119,7 +121,7 @@ export default function ContactContent() {
         </svg>
       ),
       title: 'Email',
-      details: ['info@al-ibrahim.com', 'sales@al-ibrahim.com'],
+      details: ['al.ibrahim.group.of.companies@gmail.com', ''],
       color: 'from-emerald-500 to-emerald-600'
     },
     {
@@ -145,32 +147,36 @@ export default function ContactContent() {
     }
   ]
 
-  const departments = [
-    {
-      name: 'Sales & Inquiries',
-      email: 'sales@al-ibrahim.com',
-      phone: '+92 300 1234567',
-      icon: '💼'
-    },
-    {
-      name: 'Technical Support',
-      email: 'support@al-ibrahim.com',
-      phone: '+92 321 7654321',
-      icon: '🔧'
-    },
-    {
-      name: 'Customer Service',
-      email: 'service@al-ibrahim.com',
-      phone: '+92 333 9876543',
-      icon: '🤝'
-    },
-    {
-      name: 'LED Products',
-      email: 'led@al-ibrahim.com',
-      phone: '+92 345 5555555',
-      icon: '💡'
-    }
-  ]
+
+  
+const departments = [
+  {
+    name: 'General Inquiries',
+    email: 'al.ibrahim.group.of.companies@gmail.com',
+    phone: '+92 300 1234567',
+    icon: <Building2 className="w-full h-full text-slate-700" strokeWidth={1.5} />
+  },
+  {
+    name: 'Ibrahim Chemicals',
+    email: 'al.ibrahim.group.of.companies@gmail.com',
+    phone: '+92 300 1234568',
+    icon: <Beaker className="w-full h-full text-slate-700" strokeWidth={1.5} />
+  },
+  {
+    name: 'Universe LED',
+    email: 'al.ibrahim.group.of.companies@gmail.com',
+    phone: '+92 300 1234569',
+    icon: <Lightbulb className="w-full h-full text-slate-700" strokeWidth={1.5} />
+  },
+  {
+    name: 'Customer Support',
+    email: 'al.ibrahim.group.of.companies@gmail.com',
+    phone: '+92 300 1234570',
+    icon: <Users className="w-full h-full text-slate-700" strokeWidth={1.5} />
+    
+  }
+]
+
   return (
     <div className="min-h-screen bg-white">
 
@@ -265,7 +271,7 @@ export default function ContactContent() {
                   </div>
                   <div>
                     <div className="text-lg font-black text-slate-900">Email Us</div>
-                    <div className="text-sm font-bold text-slate-500">info@al-ibrahim.com</div>
+                    <div className="text-sm font-bold text-slate-500">al.ibrahim.group.of.companies@gmail.com</div>
                   </div>
                 </div>
               </div>
@@ -285,247 +291,252 @@ export default function ContactContent() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section id="contact-form" className="py-16 sm:py-20 lg:py-24 xl:py-32 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl"></div>
-        </div>
+    <section id="contact-form" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
+  <div className="absolute inset-0 opacity-30">
+    <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl"></div>
+  </div>
 
-        <div className="container mx-autopx-4 sm:px-6 lg:px-12 xl:px-16 relative z-10">
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <div className="bg-white rounded-3xl sm:rounded-[3rem] shadow-2xl shadow-slate-300/50 border-2 border-slate-100 p-6 sm:p-8 lg:p-12">
-                <div className="mb-10">
-                  <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-4 sm:mb-6">
-                    <span className="text-xs sm:text-sm font-bold text-blue-700 tracking-wide">SEND US A MESSAGE</span>
-                  </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-3 sm:mb-4">
-                    Share Your Requirements
-                  </h2>
-                  <p className="text-base sm:text-lg text-slate-600">
-                    Fill out the form and our team will get back to you within 24 hours
-                  </p>
-                </div>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+    <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
 
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  {status.type !== 'idle' && (
-                    <div className={`p-4 rounded-xl font-semibold ${status.type === 'success'
-                      ? 'bg-green-100 border-2 border-green-500 text-green-800'
-                      : status.type === 'error'
-                        ? 'bg-red-100 border-2 border-red-500 text-red-800'
-                        : 'bg-blue-100 border-2 border-blue-500 text-blue-800'
-                      }`}>
-                      {status.message}
-                    </div>
-                  )}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium"
-                        placeholder="john@company.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-bold text-slate-700 mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium"
-                        placeholder="+92 300 1234567"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-bold text-slate-700 mb-2">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium"
-                        placeholder="Your Company"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="industry" className="block text-sm font-bold text-slate-700 mb-2">
-                      Industry / Sector *
-                    </label>
-                    <select
-                      id="industry"
-                      name="industry"
-                      value={formData.industry}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium"
-                    >
-                      <option value="">Select your industry</option>
-                      <option value="paints">Paints & Coatings</option>
-                      <option value="pharmaceutical">Pharmaceutical</option>
-                      <option value="textile">Textile</option>
-                      <option value="agriculture">Agriculture</option>
-                      <option value="construction">Construction</option>
-                      <option value="cosmetics">Cosmetics</option>
-                      <option value="food">Food Processing</option>
-                      <option value="led">LED Products</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-bold text-slate-700 mb-2">
-                      Your Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium resize-none"
-                      placeholder="Tell us about your requirements..."
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={status.type === 'loading'}
-                    className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                  >
-                    {status.type === 'loading' ? (
-                      <span className="flex items-center justify-center">
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        Sending...
-                      </span>
-                    ) : (
-                      'Send Message'
-                    )}
-                  </button>
-
-                </form>
-              </div>
+      {/* Contact Form */}
+      <div className="lg:col-span-3">
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl shadow-slate-300/50 border-2 border-slate-100 p-6 sm:p-8 lg:p-10">
+          <div className="mb-8 sm:mb-10">
+            <div className="inline-block px-4 py-2 bg-blue-100 rounded-full mb-4">
+              <span className="text-xs sm:text-sm font-bold text-blue-700 tracking-wide">SEND US A MESSAGE</span>
             </div>
-
-            {/* Contact Info Cards */}
-            <div className="lg:col-span-2 space-y-6">
-              {contactInfo.map((info, index) => (
-                <div
-                  key={index}
-                  className="group bg-white rounded-3xl p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-2"
-                >
-                  <div className="flex items-start space-x-5">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${info.color} rounded-2xl flex items-center justify-center text-white shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                      {info.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-black text-slate-900 mb-3">{info.title}</h3>
-                      <div className="space-y-2">
-                        {info.details.map((detail, i) => (
-                          <p key={i} className="text-slate-600 font-medium">
-                            {detail}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Departments */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-8 lg:px-16">
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <div className="inline-block px-5 py-2 bg-blue-100 rounded-full mb-6">
-              <span className="text-sm font-bold text-blue-700 tracking-wide">SPECIALIZED TEAMS</span>
-            </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
-              Contact Our Departments
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-3">
+              Share Your Requirements
             </h2>
-            <p className="text-xl text-slate-600 font-medium">
-              Reach out to our specialized teams for personalized assistance
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600">
+              Fill out the form and our team will get back to you within 24 hours
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {departments.map((dept, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 overflow-hidden"
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+            {status.type !== 'idle' && (
+              <div className={`p-4 rounded-xl font-semibold text-sm sm:text-base ${status.type === 'success'
+                ? 'bg-green-100 border-2 border-green-500 text-green-800'
+                : status.type === 'error'
+                  ? 'bg-red-100 border-2 border-red-500 text-red-800'
+                  : 'bg-blue-100 border-2 border-blue-500 text-blue-800'
+                }`}>
+                {status.message}
+              </div>
+            )}
+
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+              <div>
+                <label htmlFor="name" className="block text-xs sm:text-sm font-bold text-slate-700 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 sm:px-5 sm:py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium text-sm sm:text-base"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-xs sm:text-sm font-bold text-slate-700 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 sm:px-5 sm:py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium text-sm sm:text-base"
+                  placeholder="john@company.com"
+                />
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+              <div>
+                <label htmlFor="phone" className="block text-xs sm:text-sm font-bold text-slate-700 mb-2">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 sm:px-5 sm:py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium text-sm sm:text-base"
+                  placeholder="+92 300 1234567"
+                />
+              </div>
+              <div>
+                <label htmlFor="company" className="block text-xs sm:text-sm font-bold text-slate-700 mb-2">
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 sm:px-5 sm:py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium text-sm sm:text-base"
+                  placeholder="Your Company"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="industry" className="block text-xs sm:text-sm font-bold text-slate-700 mb-2">
+                Industry / Sector *
+              </label>
+              <select
+                id="industry"
+                name="industry"
+                value={formData.industry}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 sm:px-5 sm:py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium text-sm sm:text-base"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                <option value="">Select your industry</option>
+                <option value="paints">Paints & Coatings</option>
+                <option value="pharmaceutical">Pharmaceutical</option>
+                <option value="textile">Textile</option>
+                <option value="agriculture">Agriculture</option>
+                <option value="construction">Construction</option>
+                <option value="cosmetics">Cosmetics</option>
+                <option value="food">Food Processing</option>
+                <option value="led">LED Products</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-                <div className="relative z-10 text-center">
-                  <div className="text-5xl mb-6 group-hover:scale-125 transition-transform duration-500">
-                    {dept.icon}
-                  </div>
+            <div>
+              <label htmlFor="message" className="block text-xs sm:text-sm font-bold text-slate-700 mb-2">
+                Your Message *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={5}
+                className="w-full px-4 py-3 sm:px-5 sm:py-3.5 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:bg-white transition-all duration-300 outline-none text-slate-900 font-medium resize-none text-sm sm:text-base"
+                placeholder="Tell us about your requirements..."
+              ></textarea>
+            </div>
 
-                  <h3 className="text-xl font-black text-slate-900 mb-4">
-                    {dept.name}
-                  </h3>
+            <button
+              type="submit"
+              disabled={status.type === 'loading'}
+              className="w-full px-6 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-base sm:text-lg rounded-xl hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            >
+              {status.type === 'loading' ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                'Send Message'
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
 
-                  <div className="space-y-3">
-                    <a
-                      href={`mailto:${dept.email}`}
-                      className="block text-sm text-blue-600 hover:text-blue-700 font-semibold transition-colors"
-                    >
-                      {dept.email}
-                    </a>
-                    <a
-                      href={`tel:${dept.phone}`}
-                      className="block text-sm text-slate-600 hover:text-slate-900 font-medium transition-colors"
-                    >
-                      {dept.phone}
-                    </a>
-                  </div>
+      {/* Contact Info Cards */}
+      <div className="lg:col-span-2 space-y-5 sm:space-y-6">
+        {contactInfo.map((info, index) => (
+          <div
+            key={index}
+            className="group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 lg:p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-2"
+          >
+            <div className="flex items-start space-x-4 sm:space-x-5">
+              <div className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${info.color} rounded-2xl flex items-center justify-center text-white shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 flex-shrink-0`}>
+                {info.icon}
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2 sm:mb-3">{info.title}</h3>
+                <div className="space-y-1.5 sm:space-y-2">
+                  {info.details.map((detail, i) => (
+                    <p key={i} className="text-sm sm:text-base text-slate-600 font-medium break-words">
+                      {detail}
+                    </p>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+   
+
+<section className="py-16 sm:py-20 lg:py-24 xl:py-32 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
+    <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+      <div className="inline-block px-4 sm:px-5 py-2 bg-blue-100 rounded-full mb-4 sm:mb-6">
+        <span className="text-xs sm:text-sm font-bold text-blue-700 tracking-wide">SPECIALIZED TEAMS</span>
+      </div>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-slate-900 mb-4 sm:mb-6 leading-tight">
+        Contact Our Departments
+      </h2>
+      <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-medium">
+        Reach out to our specialized teams for personalized assistance
+      </p>
+    </div>
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      {departments.map((dept, index) => (
+        <div
+          key={index}
+          className="group relative bg-gradient-to-br from-slate-50 to-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 lg:p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+
+          <div className="relative z-10 text-center">
+            <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
+              {dept.icon}
+            </div>
+
+            <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-3 sm:mb-4">
+              {dept.name}
+            </h3>
+
+            <div className="space-y-2 sm:space-y-3">
+              <a
+                href={`mailto:${dept.email}`}
+                className="block text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-semibold transition-colors break-words"
+              >
+                {dept.email}
+              </a>
+              <a
+                href={`tel:${dept.phone}`}
+                className="block text-xs sm:text-sm text-slate-600 hover:text-slate-900 font-medium transition-colors"
+              >
+                {dept.phone}
+              </a>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
       {/* Visit Us Section */}
       <section className="py-24 lg:py-32 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-600 relative overflow-hidden">
@@ -592,11 +603,11 @@ export default function ContactContent() {
       </section>
 
       {/* Map Section (Placeholder) */}
-      <section className="py-24 lg:py-32 bg-slate-50">
+      {/* <section className="py-24 lg:py-32 bg-slate-50">
         <div className="container mx-auto px-8 lg:px-16">
           <div className="bg-white rounded-[3rem] shadow-2xl shadow-slate-300/50 border-2 border-slate-100 overflow-hidden">
             <div className="relative w-full h-[500px] bg-gradient-to-br from-slate-200 to-slate-100">
-              {/* Placeholder for Google Maps integration */}
+              
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center space-y-4">
                   <svg className="w-20 h-20 text-slate-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -610,7 +621,7 @@ export default function ContactContent() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-
+import homePageImage from "@/public/images/homepageimage.png"
 
 export default function HomeContent() {
   const [scrolled, setScrolled] = useState(false)
@@ -152,7 +152,7 @@ export default function HomeContent() {
               >
                 <div className="relative w-full h-[600px] bg-gradient-to-br from-slate-200 to-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop"
+                    src={homePageImage.src}
                     alt="Al-Ibrahim Chemical Manufacturing Facility"
                     className="w-full h-full object-cover"
                   />
