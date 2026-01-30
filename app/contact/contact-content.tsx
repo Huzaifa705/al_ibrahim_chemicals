@@ -1,6 +1,14 @@
 'use client'
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { Building2, Beaker, Lightbulb, Users } from 'lucide-react'
+import { 
+  MapPin,      // Location/Map marker icon
+  Phone,       // Phone icon
+  Navigation,  // Navigation/Directions icon
+  Mail,        // Email icon (if needed)
+  Clock        // Business hours icon (if needed)
+} from 'lucide-react';
+
 
 
 export default function ContactContent() {
@@ -150,32 +158,47 @@ export default function ContactContent() {
 
   
 const departments = [
+  // Director
   {
-    name: 'General Inquiries',
-    email: 'al.ibrahim.group.of.companies@gmail.com',
-    phone: '+92 300 1234567',
-    icon: <Building2 className="w-full h-full text-slate-700" strokeWidth={1.5} />
+    name: "Director",
+    email: "al.ibrahim.group.of.companies@gmail.com",
+    phone: "+92 300 2142622",
+    icon: <Users className="w-full h-full text-slate-700" strokeWidth={1.5} />,
   },
+  // Chemical Section - Marketing Manager
   {
-    name: 'Ibrahim Chemicals',
-    email: 'al.ibrahim.group.of.companies@gmail.com',
-    phone: '+92 300 1234568',
-    icon: <Beaker className="w-full h-full text-slate-700" strokeWidth={1.5} />
+    name: "Chemical Section",
+    role: "Marketing Manager",
+    email: "al.ibrahim.group.of.companies@gmail.com",
+    phone: "+92 315 8966670",
+    icon: <Beaker className="w-full h-full text-slate-700" strokeWidth={1.5} />,
   },
+  // Chemical Section - Purchase Manager
   {
-    name: 'Universe LED',
-    email: 'al.ibrahim.group.of.companies@gmail.com',
-    phone: '+92 300 1234569',
-    icon: <Lightbulb className="w-full h-full text-slate-700" strokeWidth={1.5} />
+    name: "Chemical Section",
+    role: "Purchase Manager",
+    email: "al.ibrahim.group.of.companies@gmail.com",
+    phone: "+92 332 0274973",
+    icon: <Beaker className="w-full h-full text-slate-700" strokeWidth={1.5} />,
   },
+  // LED Section - CEO
   {
-    name: 'Customer Support',
-    email: 'al.ibrahim.group.of.companies@gmail.com',
-    phone: '+92 300 1234570',
-    icon: <Users className="w-full h-full text-slate-700" strokeWidth={1.5} />
-    
-  }
-]
+    name: "LED Section",
+    role: "CEO",
+    email: "al.ibrahim.group.of.companies@gmail.com",
+    phone: "+92 331 0384436",
+    icon: <Lightbulb className="w-full h-full text-slate-700" strokeWidth={1.5} />,
+  },
+  // LED Section - Sales Manager
+  {
+    name: "LED Section",
+    role: "Sales Manager",
+    email: "al.ibrahim.group.of.companies@gmail.com",
+    phone: "+92 336 0322055",
+    icon: <Lightbulb className="w-full h-full text-slate-700" strokeWidth={1.5} />,
+  },
+];
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -221,7 +244,7 @@ const departments = [
                   </svg>
                 </a>
                 <a
-                  href="tel:+923001234567"
+                  href="tel:+92300 2142622"
                   className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 lg:px-10 py-4 bg-slate-100 text-slate-900 rounded-xl font-semibold hover:bg-slate-200 transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -498,41 +521,48 @@ const departments = [
       </p>
     </div>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-      {departments.map((dept, index) => (
-        <div
-          key={index}
-          className="group relative bg-gradient-to-br from-slate-50 to-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 lg:p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-
-          <div className="relative z-10 text-center">
-            <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
-              {dept.icon}
-            </div>
-
-            <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-3 sm:mb-4">
-              {dept.name}
-            </h3>
-
-            <div className="space-y-2 sm:space-y-3">
-              <a
-                href={`mailto:${dept.email}`}
-                className="block text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-semibold transition-colors break-words"
-              >
-                {dept.email}
-              </a>
-              <a
-                href={`tel:${dept.phone}`}
-                className="block text-xs sm:text-sm text-slate-600 hover:text-slate-900 font-medium transition-colors"
-              >
-                {dept.phone}
-              </a>
-            </div>
-          </div>
+<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+  {departments.map((dept, index) => (
+    <div
+      key={index}
+      className="group relative bg-gradient-to-br from-slate-50 to-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 lg:p-8 border-2 border-slate-100 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+      
+      <div className="relative z-10 text-center">
+        <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
+          {dept.icon}
         </div>
-      ))}
+        
+        <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2">
+          {dept.name}
+        </h3>
+        
+        {dept.role && (
+          <p className="text-sm font-bold text-blue-600 mb-3 sm:mb-4">
+            {dept.role}
+          </p>
+        )}
+        
+        <div className="space-y-2 sm:space-y-3">
+          <a
+            href={`mailto:${dept.email}`}
+            className="block text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-semibold transition-colors break-words"
+          >
+            {dept.email}
+          </a>
+          <a
+            href={`tel:${dept.phone}`}
+            className="block text-xs sm:text-sm text-slate-600 hover:text-slate-900 font-medium transition-colors"
+          >
+            {dept.phone}
+          </a>
+        </div>
+      </div>
     </div>
+  ))}
+</div>
+
   </div>
 </section>
 
@@ -622,6 +652,56 @@ const departments = [
           </div>
         </div>
       </section> */}
+      <section className="py-24 lg:py-32 bg-slate-50">
+  <div className="container mx-auto px-8 lg:px-16">
+    <div className="bg-white rounded-[3rem] shadow-2xl shadow-slate-300/50 border-2 border-slate-100 overflow-hidden">
+      
+      {/* Map */}
+      <div className="relative w-full h-[500px]">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.234!2d67.0807!3d24.9513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f90740cdb77%3A0x7d5f497921c7d24e!2sFB%20Area%20Block%2022%2C%20Karachi!5e0!3m2!1sen!2s!4v1738256000000!5m2!1sen!2s"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen={true}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="w-full h-full"
+        />
+      </div>
+      
+
+      {/* Address Banner Overlay */}
+      <div className="relative -mt-20 mx-6 sm:mx-8 lg:mx-12 z-10">
+        <div className="bg-white rounded-2xl shadow-2xl border-2 border-slate-100 p-6 sm:p-8">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-black text-slate-900 mb-2">Our Office Location</h3>
+              <p className="text-base text-slate-600 font-semibold mb-1">
+                L-3, Block-22, F.B Industrial Area
+              </p>
+              <p className="text-sm text-slate-500 font-medium">
+                Karachi, Pakistan
+              </p>
+              <p className="text-sm text-blue-600 font-semibold mt-3">
+                📞 Call for exact directions: +92 300 2142622
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="h-16"></div> {/* Spacer */}
+    </div>
+  </div>
+</section>
+
     </div>
   )
 }
