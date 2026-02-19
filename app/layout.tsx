@@ -7,22 +7,23 @@ import Footer from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'swap',
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: 'swap',
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://al-ibrahim-chemicals.vercel.app'),
-    title: {
+  metadataBase: new URL("https://al-ibrahim-chemicals.vercel.app"),
+  title: {
     default: "Al-Ibrahim Group | Premium Chemical Suppliers in Pakistan",
-    template: "%s | Al-Ibrahim Group" // Template for child pages
+    template: "%s | Al-Ibrahim Group", // Template for child pages
   },
-  description: "Leading chemical distribution company in Pakistan since 2010. ISO-certified chemicals for pharmaceutical, textile, construction, and agriculture industries. 500+ global partners, 50+ countries served.",
+  description:
+    "Leading chemical distribution company in Pakistan since 2005. ISO-certified chemicals for pharmaceutical, textile, construction, and agriculture industries. 500+ global partners, 50+ countries served.",
   keywords: [
     "chemical suppliers Pakistan",
     "industrial chemicals Karachi",
@@ -33,12 +34,18 @@ export const metadata: Metadata = {
     "construction chemicals Pakistan",
     "agriculture chemicals",
     "Al-Ibrahim Group",
-    "chemical trading Pakistan"
+    "chemical trading Pakistan",
   ],
-   authors: [{ name: "Al-Ibrahim Group", url: "https://al-ibrahim-chemicals.vercel.app" }],
+  authors: [
+    {
+      name: "Al-Ibrahim Group",
+      url: "https://al-ibrahim-chemicals.vercel.app",
+    },
+  ],
   openGraph: {
     title: "Al-Ibrahim Group | Premium Chemical Suppliers",
-    description: "World-class chemical products with ISO-certified quality. Serving 50+ countries with 500+ global partners.",
+    description:
+      "World-class chemical products with ISO-certified quality. Serving 50+ countries with 500+ global partners.",
     url: "https://al-ibrahim-chemicals.vercel.app/",
     siteName: "Al-Ibrahim Group",
     images: [
@@ -52,13 +59,13 @@ export const metadata: Metadata = {
     locale: "en_PK",
     type: "website",
   },
-   twitter: {
+  twitter: {
     card: "summary_large_image",
     title: "Al-Ibrahim Group | Premium Chemical Suppliers",
-    description: "Leading chemical distribution in Pakistan since 2010",
+    description: "Leading chemical distribution in Pakistan since 2005",
     images: ["/twitter-image.jpg"],
   },
- robots: {
+  robots: {
     index: true,
     follow: true,
     googleBot: {
@@ -69,11 +76,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-   alternates: {
+  alternates: {
     canonical: "https://al-ibrahim-chemicals.vercel.app",
   },
 };
-
 
 export default function RootLayout({
   children,
@@ -82,31 +88,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-         <head>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Al-Ibrahim Group",
-              "url": "https://al-ibrahim-chemicals.vercel.app",
-              "logo": "https://al-ibrahim-chemicals.vercel.app/logo.png",
-              "description": "Leading chemical distribution company in Pakistan since 2010",
-              "foundingDate": "2010",
-              "address": {
+              name: "Al-Ibrahim Group",
+              url: "https://al-ibrahim-chemicals.vercel.app",
+              logo: "https://al-ibrahim-chemicals.vercel.app/logo.png",
+              description:
+                "Leading chemical distribution company in Pakistan since 2005",
+              foundingDate: "2005",
+              address: {
                 "@type": "PostalAddress",
-                "addressLocality": "Karachi",
-                "addressRegion": "Sindh",
-                "addressCountry": "PK"
+                addressLocality: "Karachi",
+                addressRegion: "Sindh",
+                addressCountry: "PK",
               },
-              "contactPoint": {
+              contactPoint: {
                 "@type": "ContactPoint",
-                "contactType": "Customer Service",
-                "email": "info@al-ibrahim.com",
-                "availableLanguage": ["English", "Urdu"]
-              }
-            })
+                contactType: "Customer Service",
+                email: "info@al-ibrahim.com",
+                availableLanguage: ["English", "Urdu"],
+              },
+            }),
           }}
         />
       </head>

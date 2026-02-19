@@ -8,9 +8,6 @@
 //   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 //   const [isMounted, setIsMounted] = useState(false)
 
-
-
-
 //   useEffect(() => {
 //   const handleScroll = () => {
 //     setScrolled(window.scrollY > 50)
@@ -98,7 +95,7 @@
 //                 style={getParallaxStyle(0.5)}
 //               >
 //                 <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-//                 <span className="text-sm font-semibold text-blue-600">Trusted Chemical Partner Since 2010</span>
+//                 <span className="text-sm font-semibold text-blue-600">Trusted Chemical Partner Since 2005</span>
 //               </div>
 
 //               <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
@@ -201,7 +198,7 @@
 
 //               <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
 //                 <p className="font-medium">
-//                   Since 2010, Al-Ibrahim Group has established itself as a cornerstone of Pakistan's chemical distribution network, serving as the trusted bridge between global manufacturers and local industries.
+//                   Since 2005, Al-Ibrahim Group has established itself as a cornerstone of Pakistan's chemical distribution network, serving as the trusted bridge between global manufacturers and local industries.
 //                 </p>
 //                 <p>
 //                   Our state-of-the-art facilities and strategic partnerships with leading international suppliers enable us to deliver premium-grade chemicals that meet the most stringent quality standards. From pharmaceuticals to textiles, construction to agriculture, we power the industries that drive economic growth.
@@ -632,7 +629,7 @@
 //                 </div>
 //               </div>
 //               <p className="text-slate-400 leading-relaxed mb-8 max-w-md">
-//                 Leading the chemical industry with premium quality products, exceptional service, and unwavering commitment to client success since 2010.
+//                 Leading the chemical industry with premium quality products, exceptional service, and unwavering commitment to client success since 2005.
 //               </p>
 //               <div className="flex space-x-4">
 //                 {['in', 'f', 't'].map((social, i) => (
@@ -700,23 +697,29 @@
 //     </div>
 //   )
 // }
-import { Metadata } from 'next'
-import HomeContent from './home-content'
+import { Metadata } from "next";
+import HomeContent from "./home-content";
 
 export const metadata: Metadata = {
   title: "Al-Ibrahim Group | Chemical Suppliers & LED Solutions Pakistan",
-  description: "Leading chemical suppliers in Pakistan since 2010. Premium industrial chemicals, LED lighting solutions. Serving pharmaceutical, textile, construction industries. ISO certified, 500+ partners.",
-  keywords: ["chemical suppliers Pakistan", "LED lights Pakistan", "industrial chemicals Karachi"],
+  description:
+    "Leading chemical suppliers in Pakistan since 2005. Premium industrial chemicals, LED lighting solutions. Serving pharmaceutical, textile, construction industries. ISO certified, 500+ partners.",
+  keywords: [
+    "chemical suppliers Pakistan",
+    "LED lights Pakistan",
+    "industrial chemicals Karachi",
+  ],
   alternates: {
     canonical: "https://al-ibrahim-chemicals.vercel.app",
   },
   openGraph: {
     title: "Al-Ibrahim Group | Chemical Suppliers & LED Solutions Pakistan",
-    description: "Premium chemical distribution and LED solutions in Pakistan. ISO certified quality since 2010.",
+    description:
+      "Premium chemical distribution and LED solutions in Pakistan. ISO certified quality since 2005.",
     url: "https://al-ibrahim-chemicals.vercel.app",
     type: "website",
   },
-}
+};
 
 export default function Home() {
   return (
@@ -727,17 +730,18 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "Al-Ibrahim Group",
-            "url": "https://al-ibrahim-chemicals.vercel.app",
-            "potentialAction": {
+            name: "Al-Ibrahim Group",
+            url: "https://al-ibrahim-chemicals.vercel.app",
+            potentialAction: {
               "@type": "SearchAction",
-              "target": "https://al-ibrahim-chemicals.vercel.app/ibrahim-chemical?search={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          })
+              target:
+                "https://al-ibrahim-chemicals.vercel.app/ibrahim-chemical?search={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          }),
         }}
       />
       <HomeContent />
     </>
-  )
+  );
 }
