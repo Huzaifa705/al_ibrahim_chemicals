@@ -247,7 +247,7 @@ export default function HomeContent() {
               </div>
 
               <div
-                className="absolute -bottom-8 -left-8 bg-white rounded-3xl p-8 shadow-2xl shadow-slate-400/30 border border-slate-100 transform hover:scale-105 hover:rotate-2 transition-all duration-500 cursor-pointer"
+                className="absolute -bottom-8 -left-8 bg-white rounded-3xl p-4 sm:p-8 shadow-2xl shadow-slate-400/30 border border-slate-100 transform hover:scale-105 hover:rotate-2 transition-all duration-500 cursor-pointer"
                 style={getParallaxStyle(-0.5)}
               >
                 <div className="flex items-center space-x-5">
