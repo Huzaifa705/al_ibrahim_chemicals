@@ -916,7 +916,7 @@ export default function HomeContent() {
                       </svg>
                     ),
                     label: "Phone",
-                    value: "+92 300 2142622",
+                    value: "+92 315 8966670",
                   },
                   {
                     icon: (

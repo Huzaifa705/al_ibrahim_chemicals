@@ -204,7 +204,7 @@ export default function ContactContent() {
     {
       name: "Director",
       email: "al.ibrahim.group.of.companies@gmail.com",
-      phone: "+92 300 2142622",
+      phone: "+92 315 8966670",
       icon: (
         <Users className="w-full h-full text-slate-700" strokeWidth={1.5} />
       ),
@@ -310,7 +310,7 @@ export default function ContactContent() {
                   </svg>
                 </a>
                 <a
-                  href="tel:+92300 2142622"
+                  href="tel:+92 315 8966670"
                   className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 lg:px-10 py-4 bg-slate-100 text-slate-900 rounded-xl font-semibold hover:bg-slate-200 transition-all duration-300"
                 >
                   <svg
@@ -893,7 +893,7 @@ export default function ContactContent() {
                       Karachi, Pakistan
                     </p>
                     <p className="text-sm text-blue-600 font-semibold mt-3">
-                      📞 Call for exact directions: +92 300 2142622
+                      📞 Call for exact directions: +92 315 8966670
                     </p>
                   </div>
                 </div>
