@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Contact Al-Ibrahim Group for chemical supply inquiries. Located in Karachi, Pakistan. 24-hour response time.",
   keywords: ["contact Al-Ibrahim Group", "chemical supplier contact Karachi"],
   alternates: {
-    canonical: "https://al-ibrahim-chemicals.vercel.app/contact",
+    canonical: "https://alibrahimgroupofcompanies.com/contact",
   },
 }
 

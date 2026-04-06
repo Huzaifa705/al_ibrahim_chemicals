@@ -13,12 +13,12 @@ export const metadata: Metadata = {
     "resin supplier Pakistan"
   ],
   alternates: {
-    canonical: "https://al-ibrahim-chemicals.vercel.app/products",
+    canonical: "https://alibrahimgroupofcompanies.com//products",
   },
   openGraph: {
     title: "Chemical Products & Solutions | 14+ Industries",
     description: "Premium chemicals for paints, textile, pharmaceutical, agriculture. ISO certified.",
-    url: "https://al-ibrahim-chemicals.vercel.app/products",
+    url: "https://alibrahimgroupofcompanies.com//products",
   },
 }
 
