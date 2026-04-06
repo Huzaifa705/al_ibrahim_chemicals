@@ -103,12 +103,12 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-700 ${
           scrolled
-            ? "bg-[#f7f7f7] backdrop-blur-xl shadow-2xl shadow-slate-200/20 py-4"
-            : "bg-[#f7f7f7] py-6"
+            ? "bg-[#f7f7f7] backdrop-blur-xl shadow-2xl shadow-slate-200/20 py-2 lg:py-2"
+            : "bg-[#f7f7f7] py-2 lg:py-3"
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
-          <div className="flex items-center justify-between h-24">
+          <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-4 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
@@ -119,7 +119,7 @@ const Navbar = () => {
                   alt="Al-Ibrahim Chemicals Logo"
                   width={100}
                   height={100}
-                  className="w-34 h-20 lg:w-50 lg:h-25"
+                  className="lg:w-30 lg:h-16"
                 />
               </div>
             </Link>
