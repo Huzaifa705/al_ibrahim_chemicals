@@ -13,12 +13,12 @@ export const metadata: Metadata = {
     "resin supplier Pakistan"
   ],
   alternates: {
-    canonical: "https://alibrahimgroupofcompanies.com//products",
+    canonical: "https://alibrahimgroupofcompanies.com/ibrahim-chemical",
   },
   openGraph: {
     title: "Chemical Products & Solutions | 14+ Industries",
     description: "Premium chemicals for paints, textile, pharmaceutical, agriculture. ISO certified.",
-    url: "https://alibrahimgroupofcompanies.com//products",
+    url: "https://alibrahimgroupofcompanies.com/ibrahim-chemical",
   },
 }
 
@@ -33,6 +33,7 @@ export default function Products() {
             "@type": "Product",
             "name": "Industrial Chemical Solutions",
             "description": "Premium liquid and powder chemicals for 14+ industries",
+            "url": "https://alibrahimgroupofcompanies.com/ibrahim-chemical",
             "brand": {
               "@type": "Brand",
               "name": "Al-Ibrahim Group"
@@ -40,7 +41,8 @@ export default function Products() {
             "offers": {
               "@type": "AggregateOffer",
               "availability": "https://schema.org/InStock",
-              "priceCurrency": "PKR"
+              "priceCurrency": "PKR",
+              "offerCount": "500"
             }
           })
         }}

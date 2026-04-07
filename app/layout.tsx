@@ -17,43 +17,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://al-ibrahim-chemicals.vercel.app"),
+  metadataBase: new URL("https://alibrahimgroupofcompanies.com"),
   title: {
-    default: "Al-Ibrahim Group | Premium Chemical Suppliers in Pakistan",
-    template: "%s | Al-Ibrahim Group", // Template for child pages
+    default: "Al-Ibrahim Group | Premium Chemical & LED Suppliers in Pakistan",
+    template: "%s | Al-Ibrahim Group",
   },
   description:
-    "Leading chemical distribution company in Pakistan since 2005. ISO-certified chemicals for pharmaceutical, textile, construction, and agriculture industries. 500+ global partners, 50+ countries served.",
+    "Leading industrial chemical distributor and premium Universe LED lighting supplier in Pakistan since 2005. ISO-certified quality, 500+ global partners, serving 14+ industries.",
   keywords: [
     "chemical suppliers Pakistan",
     "industrial chemicals Karachi",
+    "Universe LED Pakistan",
+    "LED lights Karachi",
     "chemical distribution Pakistan",
     "ISO certified chemicals",
-    "pharmaceutical chemicals Pakistan",
-    "textile chemicals supplier",
-    "construction chemicals Pakistan",
-    "agriculture chemicals",
     "Al-Ibrahim Group",
-    "chemical trading Pakistan",
   ],
-  authors: [
-    {
-      name: "Al-Ibrahim Group",
-      url: "https://al-ibrahim-chemicals.vercel.app",
-    },
-  ],
+  authors: [{ name: "Al-Ibrahim Group", url: "https://alibrahimgroupofcompanies.com" }],
   openGraph: {
-    title: "Al-Ibrahim Group | Premium Chemical Suppliers",
-    description:
-      "World-class chemical products with ISO-certified quality. Serving 50+ countries with 500+ global partners.",
-    url: "https://al-ibrahim-chemicals.vercel.app/",
+    title: "Al-Ibrahim Group of Companies",
+    description: "World-class chemical products and premium LED technology. ISO-certified quality serving industries worldwide.",
+    url: "https://alibrahimgroupofcompanies.com",
     siteName: "Al-Ibrahim Group",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/companyLogo.png", // Ensures WhatsApp/LinkedIn pull your logo
         width: 1200,
         height: 630,
-        alt: "Al-Ibrahim Group Chemical Suppliers",
+        alt: "Al-Ibrahim Group",
       },
     ],
     locale: "en_PK",
@@ -62,8 +53,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Al-Ibrahim Group | Premium Chemical Suppliers",
-    description: "Leading chemical distribution in Pakistan since 2005",
-    images: ["/twitter-image.jpg"],
+    description: "Leading chemical distribution in Pakistan since 2005.",
+    images: ["/images/companyLogo.png"],
   },
   robots: {
     index: true,
@@ -77,7 +68,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://al-ibrahim-chemicals.vercel.app",
+    canonical: "https://alibrahimgroupofcompanies.com",
   },
 };
 
@@ -89,30 +80,42 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Elite Organization Schema for Google Knowledge Panel */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Al-Ibrahim Group",
-              url: "https://al-ibrahim-chemicals.vercel.app",
-              logo: "https://al-ibrahim-chemicals.vercel.app/logo.png",
-              description:
-                "Leading chemical distribution company in Pakistan since 2005",
+              name: "Al-Ibrahim Group of Companies",
+              alternateName: "Al-Ibrahim Chemicals",
+              url: "https://alibrahimgroupofcompanies.com",
+              logo: "https://alibrahimgroupofcompanies.com/images/companyLogo.png",
+              description: "Leading industrial chemical and LED lighting distributor in Pakistan since 2005.",
               foundingDate: "2005",
+              founder: {
+                "@type": "Person",
+                name: "Muhammad Ibrahim Peerzada"
+              },
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "L-3, Block-22, F.B Industrial Area",
                 addressLocality: "Karachi",
                 addressRegion: "Sindh",
+                postalCode: "75950",
                 addressCountry: "PK",
               },
               contactPoint: {
                 "@type": "ContactPoint",
+                telephone: "+92-315-8966670",
                 contactType: "Customer Service",
-                email: "info@al-ibrahim.com",
+                email: "al.ibrahim.group.of.companies@gmail.com",
+                areaServed: "PK",
                 availableLanguage: ["English", "Urdu"],
               },
+              sameAs: [
+                "https://alibrahimgroupofcompanies.com"
+              ]
             }),
           }}
         />

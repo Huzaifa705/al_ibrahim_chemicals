@@ -5,7 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/*'], // Prevent Google from indexing your API routes
     },
-    sitemap: 'https://al-ibrahim-chemicals.vercel.app/sitemap.xml',
+    sitemap: 'https://alibrahimgroupofcompanies.com/sitemap.xml',
   }
 }
