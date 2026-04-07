@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
 import {
   Building2,
   Beaker,
@@ -12,14 +13,10 @@ import {
   Navigation,
   Mail,
   Clock,
-  Zap,
-  Globe
 } from "lucide-react";
 import EmailCopy from "../../components/emailCopy";
 
 export default function ContactContent() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMounted, setIsMounted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,25 +29,6 @@ export default function ContactContent() {
     type: "idle" | "loading" | "success" | "error";
     message: string;
   }>({ type: "idle", message: "" });
-
-  useEffect(() => {
-    setIsMounted(true);
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
-  const getParallaxStyle = (multiplier: number = 1) => {
-    if (!isMounted) return {};
-    return {
-      transform: `translate(${((mousePosition.x - window.innerWidth / 2) / 60) * multiplier}px, ${((mousePosition.y - window.innerHeight / 2) / 60) * multiplier}px)`,
-      transition: "transform 0.1s ease-out",
-    };
-  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -110,30 +88,39 @@ export default function ContactContent() {
     }
   };
 
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
   const contactInfo = [
     {
-      icon: <Phone className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />,
       title: "Phone",
       details: ["+92 300 1234567", "+92 321 7654321"],
-      color: "from-blue-500 to-blue-600",
     },
     {
-      icon: <Mail className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />,
       title: "Email",
-      details: ["al.ibrahim.group.of.companies@gmail.com", ""],
-      color: "from-emerald-500 to-emerald-600",
+      details: ["al.ibrahim.group.of.companies@gmail.com"],
     },
     {
-      icon: <MapPin className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />,
       title: "Location",
       details: ["Karachi, Pakistan", "Visit by appointment"],
-      color: "from-violet-500 to-violet-600",
     },
     {
-      icon: <Clock className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />,
       title: "Business Hours",
       details: ["Monday - Saturday: 9AM - 6PM", "Sunday: Closed"],
-      color: "from-amber-500 to-amber-600",
     },
   ];
 
@@ -142,191 +129,176 @@ export default function ContactContent() {
       name: "Director",
       email: "al.ibrahim.group.of.companies@gmail.com",
       phone: "+92 315 8966670",
-      icon: <Users className="w-8 h-8 md:w-10 md:h-10 text-slate-700" strokeWidth={1.5} />,
+      icon: <Users className="w-8 h-8 md:w-10 md:h-10 text-brand-primary" strokeWidth={1.5} />,
     },
     {
       name: "Chemical Section",
       role: "Marketing Manager",
       email: "al.ibrahim.group.of.companies@gmail.com",
       phone: "+92 315 8966670",
-      icon: <Beaker className="w-8 h-8 md:w-10 md:h-10 text-slate-700" strokeWidth={1.5} />,
+      icon: <Beaker className="w-8 h-8 md:w-10 md:h-10 text-brand-primary" strokeWidth={1.5} />,
     },
     {
       name: "Chemical Section",
       role: "Purchase Manager",
       email: "al.ibrahim.group.of.companies@gmail.com",
       phone: "+92 332 0274973",
-      icon: <Beaker className="w-8 h-8 md:w-10 md:h-10 text-slate-700" strokeWidth={1.5} />,
+      icon: <Beaker className="w-8 h-8 md:w-10 md:h-10 text-brand-primary" strokeWidth={1.5} />,
     },
     {
       name: "LED Section",
       role: "CEO",
       email: "al.ibrahim.group.of.companies@gmail.com",
       phone: "+92 331 0384436",
-      icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10 text-slate-700" strokeWidth={1.5} />,
+      icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10 text-brand-primary" strokeWidth={1.5} />,
     },
     {
       name: "LED Section",
       role: "Sales Manager",
       email: "al.ibrahim.group.of.companies@gmail.com",
       phone: "+92 336 0322055",
-      icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10 text-slate-700" strokeWidth={1.5} />,
+      icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10 text-brand-primary" strokeWidth={1.5} />,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-white selection:bg-brand-50 selection:text-brand-dark overflow-x-hidden">
 
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-[#f7f7f7]">
-        <div className="absolute inset-0 opacity-40 pointer-events-none">
-          <div className="absolute top-20 left-10 md:left-20 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-blue-200 rounded-full blur-[80px] md:blur-[120px]"></div>
-          <div className="absolute bottom-20 right-10 md:right-20 w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-indigo-100 rounded-full blur-[80px] md:blur-[100px]"></div>
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
+        <div className="absolute inset-0 pointer-events-none opacity-30">
+          <div className="absolute -top-[20%] -left-[10%] w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-brand-light rounded-full blur-[100px] sm:blur-[150px] mix-blend-multiply" />
+          <div className="absolute top-[40%] -right-[10%] w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-primary rounded-full blur-[80px] sm:blur-[120px] mix-blend-multiply opacity-40" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-            <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-left duration-1000">
-              <div className="inline-flex items-center space-x-2 px-3 py-1.5 md:px-4 md:py-2 bg-white rounded-full border border-slate-200 shadow-sm">
-                <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-                <span className="text-[10px] md:text-xs font-bold text-slate-600 uppercase tracking-widest">
+            <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-6 md:space-y-8">
+              <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 sm:space-x-3 px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-full border border-slate-200 shadow-sm">
+                <span className="flex h-1.5 w-1.5 sm:h-2 sm:w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-light opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-brand-primary"></span>
+                </span>
+                <span className="text-[10px] sm:text-xs font-bold text-slate-600 uppercase tracking-widest">
                   We're Here to Help You
                 </span>
-              </div>
+              </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-                <span className="text-slate-900">Let's Start</span>
-                <br />
-                <span className="text-slate-900">A</span>
-                <br />
-                <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+              <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black leading-[1.1] tracking-tight text-slate-900">
+                Let's Start <br />
+                A <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand-primary block mt-1">
                   Conversation
                 </span>
-              </h1>
+              </motion.h1>
 
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed max-w-xl">
+              <motion.p variants={fadeInUp} className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl font-medium">
                 Have questions about our products or services? Our expert team
                 is ready to provide you with the perfect chemical and LED
                 solutions for your business needs.
-              </p>
+              </motion.p>
 
-              <div className="pt-2 md:pt-4 flex flex-col sm:flex-row gap-4">
+              <motion.div variants={fadeInUp} className="pt-2 sm:pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a
                   href="#contact-form"
-                  className="px-6 md:px-8 py-3.5 md:py-4 bg-blue-600 text-white rounded-xl font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all transform hover:-translate-y-1 inline-flex items-center justify-center gap-2"
+                  className="px-6 py-3.5 sm:px-8 sm:py-4 bg-brand-dark text-white rounded-xl font-bold shadow-lg shadow-brand-dark/20 hover:bg-opacity-90 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 text-sm sm:text-base w-full sm:w-auto"
                 >
                   <span>Send Message</span>
-                  <Navigation className="w-4 h-4 md:w-5 md:h-5" />
+                  <Navigation className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
                 <a
                   href="tel:+923158966670"
-                  className="px-6 md:px-8 py-3.5 md:py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-all inline-flex items-center justify-center gap-2"
+                  className="px-6 py-3.5 sm:px-8 sm:py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-3 text-sm sm:text-base w-full sm:w-auto"
                 >
-                  <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Call Now</span>
                 </a>
-              </div>
+              </motion.div>
+            </motion.div>
 
-              <div className="pt-6 md:pt-8 grid grid-cols-2 gap-4 md:gap-6">
-                {[
-                  { icon: "⚡", label: "24h Response" },
-                  { icon: "🌍", label: "Global Reach" },
-                ].map((item, i) => (
-                  <div key={i} className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 md:gap-4">
-                    <div className="text-xl flex items-center justify-center rounded-lg md:rounded-xl shrink-0">
-                      {item.icon}
-                    </div>
-                    <div className="text-sm md:text-lg font-black text-slate-900 sm:mt-1.5 md:mt-2">
-                      {item.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Mobile simplified image, Desktop full parallax experience */}
-            <div className="relative mt-8 lg:mt-0">
-              <div
-                className="relative rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-2xl lg:border-[12px] border-4 border-white h-[350px] sm:h-[450px] lg:h-[600px]"
-                style={getParallaxStyle(0.8)}
-              >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="relative mt-8 lg:mt-0 hidden lg:block"
+            >
+              <div className="relative aspect-[4/5] w-full max-w-lg ml-auto rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white">
                 <Image
-                  src="https://martech.org/wp-content/uploads/2026/02/customer-service-CX-businessman-customers-600x335.png"
-                  alt="Contact Al-Ibrahim Group"
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+                  alt="Al-Ibrahim Corporate Office"
                   fill
-                  className="object-cover"
-                  unoptimized
+                  className="object-cover hover:scale-105 transition-transform duration-700"
                   priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-transparent" />
+
+                <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 p-5 xl:p-6 rounded-2xl flex items-center gap-4 text-white">
+                  <div className="w-10 h-10 xl:w-12 xl:h-12 rounded-full bg-brand-primary flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 xl:w-6 xl:h-6" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-base xl:text-lg">24/7 Support</div>
+                    <div className="text-xs xl:text-sm opacity-90">Global Client Assistance</div>
+                  </div>
+                </div>
               </div>
 
-              {/* Badges only show on Large screens to prevent mobile clutter */}
-              <div
-                className="hidden lg:flex absolute -bottom-8 -left-8 bg-white rounded-3xl p-8 shadow-2xl border border-slate-50 z-20 items-center space-x-5"
-                style={getParallaxStyle(-0.5)}
-              >
-                <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg text-white">
-                  <Mail className="w-8 h-8" />
+              <div className="hidden lg:flex absolute -bottom-4 -left-6 xl:-left-12 bg-white rounded-2xl p-4 xl:p-6 shadow-2xl border border-slate-100 z-20 items-center space-x-3 xl:space-x-4">
+                <div className="w-10 h-10 xl:w-12 xl:h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-primary shrink-0">
+                  <Mail className="w-5 h-5 xl:w-6 xl:h-6" />
                 </div>
                 <EmailCopy />
               </div>
-
-              <div
-                className="hidden lg:block absolute -top-8 -right-8 bg-blue-600 rounded-3xl p-6 shadow-2xl shadow-blue-500/40 z-20"
-                style={getParallaxStyle(0.3)}
-              >
-                <div className="text-center">
-                  <div className="text-4xl font-black text-white mb-1">24/7</div>
-                  <div className="text-xs font-bold text-blue-100 uppercase tracking-wider">Support</div>
-                </div>
-              </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
       </section>
 
       {/* --- CONTACT FORM SECTION --- */}
-      <section id="contact-form" className="py-20 md:py-24 lg:py-32 bg-slate-50 relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+      <section id="contact-form" className="py-16 sm:py-20 lg:py-28 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
 
-            {/* Form Container (7 Columns on Desktop) */}
-            <div className="lg:col-span-7">
-              <div className="bg-white rounded-3xl lg:rounded-[2rem] shadow-xl border border-slate-100 p-6 sm:p-8 md:p-10 lg:p-12">
-                <div className="mb-8 md:mb-10">
-                  <div className="inline-block px-4 md:px-5 py-1.5 md:py-2 bg-blue-100 rounded-full mb-4 md:mb-6">
-                    <span className="text-xs md:text-sm font-bold text-blue-700 tracking-wide uppercase">
+            {/* Form Container */}
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}
+              className="lg:col-span-7"
+            >
+              <div className="bg-slate-50 rounded-[1.5rem] sm:rounded-[2rem] border border-slate-100 p-6 sm:p-8 lg:p-12 shadow-sm">
+                <div className="mb-8 sm:mb-10">
+                  <div className="inline-block px-3 py-1.5 sm:px-4 sm:py-1.5 bg-brand-50 rounded-full mb-3 sm:mb-4 border border-brand-primary/20">
+                    <span className="text-[10px] sm:text-sm font-bold text-brand-dark tracking-wide uppercase">
                       Send Us A Message
                     </span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-3 md:mb-4">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-3 sm:mb-4">
                     Share Your Requirements
                   </h2>
-                  <p className="text-sm md:text-lg text-slate-600">
+                  <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium">
                     Fill out the form and our team will get back to you within 24 hours.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                   {status.type !== "idle" && (
                     <div
-                      className={`p-4 rounded-xl font-bold text-sm ${status.type === "success"
-                          ? "bg-emerald-50 border border-emerald-200 text-emerald-700"
-                          : status.type === "error"
-                            ? "bg-red-50 border border-red-200 text-red-700"
-                            : "bg-blue-50 border border-blue-200 text-blue-700"
+                      className={`p-4 rounded-xl font-bold text-xs sm:text-sm ${status.type === "success"
+                        ? "bg-emerald-50 border border-emerald-200 text-emerald-700"
+                        : status.type === "error"
+                          ? "bg-red-50 border border-red-200 text-red-700"
+                          : "bg-brand-50 border border-brand-primary/30 text-brand-dark"
                         }`}
                     >
                       {status.message}
                     </div>
                   )}
 
-                  <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+                  <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-xs md:text-sm font-bold text-slate-700 mb-2">Full Name *</label>
+                      <label htmlFor="name" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Full Name *</label>
                       <input
                         type="text"
                         id="name"
@@ -334,12 +306,12 @@ export default function ContactContent() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3.5 md:px-5 md:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm md:text-base"
+                        className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm sm:text-base"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-xs md:text-sm font-bold text-slate-700 mb-2">Email Address *</label>
+                      <label htmlFor="email" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Email Address *</label>
                       <input
                         type="email"
                         id="email"
@@ -347,15 +319,15 @@ export default function ContactContent() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3.5 md:px-5 md:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm md:text-base"
+                        className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm sm:text-base"
                         placeholder="john@company.com"
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+                  <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-xs md:text-sm font-bold text-slate-700 mb-2">Phone Number *</label>
+                      <label htmlFor="phone" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Phone Number *</label>
                       <input
                         type="tel"
                         id="phone"
@@ -363,33 +335,33 @@ export default function ContactContent() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3.5 md:px-5 md:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm md:text-base"
-                        placeholder="+92 300 1234567"
+                        className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm sm:text-base"
+                        placeholder="+92 315 8966670"
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-xs md:text-sm font-bold text-slate-700 mb-2">Company Name</label>
+                      <label htmlFor="company" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Company Name</label>
                       <input
                         type="text"
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3.5 md:px-5 md:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm md:text-base"
+                        className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm sm:text-base"
                         placeholder="Your Company"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="industry" className="block text-xs md:text-sm font-bold text-slate-700 mb-2">Industry / Sector *</label>
+                    <label htmlFor="industry" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Industry / Sector *</label>
                     <select
                       id="industry"
                       name="industry"
                       value={formData.industry}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3.5 md:px-5 md:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm md:text-base"
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all font-medium text-slate-900 text-sm sm:text-base"
                     >
                       <option value="">Select your industry</option>
                       <option value="paints">Paints & Coatings</option>
@@ -405,15 +377,15 @@ export default function ContactContent() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-xs md:text-sm font-bold text-slate-700 mb-2">Your Message *</label>
+                    <label htmlFor="message" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Your Message *</label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows={5}
-                      className="w-full px-4 py-3.5 md:px-5 md:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all font-medium resize-none text-slate-900 text-sm md:text-base"
+                      rows={4}
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all font-medium resize-none text-slate-900 text-sm sm:text-base"
                       placeholder="Tell us about your requirements..."
                     ></textarea>
                   </div>
@@ -421,7 +393,7 @@ export default function ContactContent() {
                   <button
                     type="submit"
                     disabled={status.type === "loading"}
-                    className="w-full px-6 py-4 md:px-8 md:py-4 bg-blue-600 text-white font-bold text-base md:text-lg rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    className="w-full px-6 py-3.5 sm:px-8 sm:py-4 bg-brand-dark text-white font-bold text-base sm:text-lg rounded-xl hover:bg-opacity-90 shadow-lg shadow-brand-dark/20 transition-all transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {status.type === "loading" ? (
                       <span className="flex items-center justify-center gap-2">
@@ -437,94 +409,86 @@ export default function ContactContent() {
                   </button>
                 </form>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Contact Info Cards (5 Columns on Desktop, 2 on Tablet, 1 on Mobile) */}
-            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5 md:gap-6">
+            {/* Contact Info Cards */}
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+              className="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-5 sm:gap-6 align-start content-start mt-6 lg:mt-0"
+            >
               {contactInfo.map((info, index) => (
-                <div
+                <motion.div
+                  variants={fadeInUp}
                   key={index}
-                  className="group bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-8 border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1"
+                  className="bg-slate-50 rounded-2xl p-5 sm:p-6 border border-slate-100 hover:border-brand-primary/30 hover:shadow-xl transition-all duration-300 flex flex-col justify-center"
                 >
-                  <div className="flex items-start gap-4 md:gap-5">
-                    <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${info.color} rounded-xl md:rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-500 flex-shrink-0`}>
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-xl flex items-center justify-center text-brand-primary shadow-sm border border-slate-100 shrink-0">
                       {info.icon}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-lg md:text-xl font-black text-slate-900 mb-1.5 md:mb-2">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-1.5 sm:mb-2">
                         {info.title}
                       </h3>
                       <div className="space-y-1">
                         {info.details.map((detail, i) => (
-                          <p key={i} className="text-sm md:text-base text-slate-600 font-medium break-words">
+                          <p key={i} className="text-xs sm:text-sm md:text-base text-slate-600 font-medium break-words">
                             {detail}
                           </p>
                         ))}
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
           </div>
         </div>
       </section>
 
       {/* --- DEPARTMENTS SECTION --- */}
-      <section className="py-20 md:py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-20">
-            <div className="inline-block px-4 md:px-5 py-1.5 md:py-2 bg-blue-100 rounded-full mb-4 md:mb-6">
-              <span className="text-xs md:text-sm font-bold text-blue-700 tracking-wide uppercase">
+      <section className="py-16 sm:py-20 lg:py-28 bg-slate-50 border-t border-slate-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+            <div className="inline-block px-3 py-1.5 sm:px-4 sm:py-1.5 bg-brand-50 rounded-full mb-4 sm:mb-6 border border-brand-primary/20">
+              <span className="text-[10px] sm:text-sm font-bold text-brand-dark tracking-wide uppercase">
                 Specialized Teams
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-4 md:mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6">
               Contact Our Departments
             </h2>
-            <p className="text-base md:text-lg lg:text-xl text-slate-600 font-medium">
-              Reach out to our specialized teams for personalized assistance
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium px-4">
+              Reach out directly to our specialized teams for personalized assistance.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
             {departments.map((dept, index) => (
               <div
                 key={index}
-                className="group relative bg-slate-50 rounded-2xl md:rounded-[2rem] p-6 md:p-8 border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-100 hover:border-brand-primary/30 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-500 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500"></div>
-
-                <div className="relative z-10 text-center">
-                  <div className="mb-4 md:mb-6 mx-auto w-fit p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-sm group-hover:bg-blue-50 transition-colors">
-                    {dept.icon}
-                  </div>
-
-                  <h3 className="text-lg md:text-xl font-black text-slate-900 mb-1 md:mb-2">
-                    {dept.name}
-                  </h3>
-
-                  {dept.role && (
-                    <p className="text-xs md:text-sm font-bold text-blue-600 mb-3 md:mb-4 uppercase tracking-wide">
-                      {dept.role}
-                    </p>
-                  )}
-
-                  <div className="space-y-2 md:space-y-3 pt-3 md:pt-4 border-t border-slate-200/60">
-                    <a
-                      href={`mailto:${dept.email}`}
-                      className="block text-xs md:text-sm text-slate-600 hover:text-blue-600 font-medium transition-colors break-words"
-                    >
-                      {dept.email}
-                    </a>
-                    <a
-                      href={`tel:${dept.phone}`}
-                      className="block text-sm md:text-base text-slate-900 font-bold hover:text-blue-600 transition-colors"
-                    >
-                      {dept.phone}
-                    </a>
-                  </div>
+                <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-brand-50 rounded-2xl text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
+                  {dept.icon}
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-1">
+                  {dept.name}
+                </h3>
+                {dept.role && (
+                  <p className="text-xs sm:text-sm font-bold text-brand-primary mb-3 sm:mb-4 uppercase tracking-wide">
+                    {dept.role}
+                  </p>
+                )}
+                <div className="space-y-2 pt-4 border-t border-slate-100 w-full mt-auto">
+                  {/* Applied break-all to prevent long emails from breaking mobile containers */}
+                  <a href={`mailto:${dept.email}`} className="block text-xs sm:text-sm text-slate-500 hover:text-brand-dark font-medium transition-colors break-all px-2">
+                    {dept.email}
+                  </a>
+                  <a href={`tel:${dept.phone}`} className="block text-sm sm:text-base text-slate-900 font-bold hover:text-brand-primary transition-colors">
+                    {dept.phone}
+                  </a>
                 </div>
               </div>
             ))}
@@ -532,78 +496,51 @@ export default function ContactContent() {
         </div>
       </section>
 
-      {/* --- VISIT US SECTION --- */}
-      <section className="py-20 md:py-24 lg:py-32 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-white rounded-full blur-[80px] md:blur-[120px]"></div>
-            <div className="absolute bottom-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-white rounded-full blur-[80px] md:blur-[120px]"></div>
-          </div>
+      {/* --- VISIT US & MAP SECTION --- */}
+      <section className="bg-slate-950 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-brand-dark rounded-full blur-[100px] sm:blur-[150px] mix-blend-screen" />
+          <div className="absolute bottom-0 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-brand-primary rounded-full blur-[80px] sm:blur-[120px] mix-blend-screen" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block px-4 md:px-5 py-1.5 md:py-2 bg-white/10 backdrop-blur-md rounded-full mb-6 md:mb-8 border border-white/20">
-              <span className="text-xs md:text-sm font-bold text-white tracking-widest uppercase">
-                Visit Us
-              </span>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-16 py-16 sm:py-24 lg:py-32 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* Text Content */}
+            <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+              <div className="inline-block px-3 py-1.5 sm:px-4 sm:py-1.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
+                <span className="text-[10px] sm:text-sm font-bold text-brand-light tracking-widest uppercase">
+                  Visit Us
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+                Experience Our <br className="hidden lg:block" /> Operations
+              </h2>
+              <p className="text-sm sm:text-base lg:text-lg text-slate-400 font-medium max-w-xl mx-auto lg:mx-0">
+                Located in the heart of Karachi's industrial hub. Visit our facility and meet our expert team in person to discuss your exact manufacturing requirements.
+              </p>
+
+              <div className="space-y-4 sm:space-y-6 pt-2 sm:pt-4 inline-block text-left">
+                {[
+                  { icon: Building2, text: "State-of-the-art warehousing" },
+                  { icon: Clock, text: "Operating Mon-Sat, 9AM to 6PM" },
+                  { icon: Users, text: "Expert consultation on-site" },
+                ].map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={i} className="flex items-center space-x-3 sm:space-x-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-light shrink-0">
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                      </div>
+                      <span className="text-xs sm:text-sm md:text-base text-slate-300 font-medium">{item.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 md:mb-8 leading-tight tracking-tight">
-              Experience Our Operations
-            </h2>
-
-            <p className="text-base md:text-lg lg:text-xl text-blue-50 mb-10 md:mb-16 leading-relaxed max-w-3xl mx-auto font-medium opacity-90">
-              Located in the heart of Karachi, Pakistan. Visit our state-of-the-art facility and meet our expert team in person.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
-              {[
-                {
-                  icon: <Building2 className="w-6 h-6 md:w-8 md:h-8" />,
-                  title: "Modern Facility",
-                  desc: "State-of-the-art warehousing and testing labs",
-                },
-                {
-                  icon: <Clock className="w-6 h-6 md:w-8 md:h-8" />,
-                  title: "Schedule Tour",
-                  desc: "Book your facility visit in advance",
-                },
-                {
-                  icon: <Users className="w-6 h-6 md:w-8 md:h-8" />,
-                  title: "Meet the Team",
-                  desc: "Connect with our expert professionals",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="group bg-white/10 backdrop-blur-xl rounded-2xl md:rounded-[2rem] p-6 md:p-8 border border-white/20 hover:bg-white/20 transition-all duration-500 transform hover:-translate-y-1"
-                >
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 text-white group-hover:scale-110 group-hover:bg-white/30 transition-all">
-                    {item.icon}
-                  </div>
-                  <div className="text-lg md:text-xl font-black text-white mb-2 md:mb-3">
-                    {item.title}
-                  </div>
-                  <div className="text-blue-50 text-sm md:text-base leading-relaxed opacity-90">
-                    {item.desc}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- RESPONSIVE MAP SECTION --- */}
-      <section className="py-20 md:py-24 lg:py-32 bg-white relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-
-          {/* Flex-to-Absolute Container Strategy */}
-          <div className="flex flex-col lg:block relative w-full bg-slate-50 lg:bg-transparent rounded-3xl lg:rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden">
 
             {/* Map Area */}
-            <div className="h-[300px] sm:h-[400px] lg:h-[600px] w-full relative shrink-0">
+            <div className="relative rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 h-[350px] sm:h-[400px] lg:h-[500px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14472.639455320703!2d67.06734199999999!3d24.9266395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f44e83f06b3%3A0xcda8d071b76df47c!2sFederal%20B%20Area%20Block%2022%20Gulberg%20Town%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
                 width="100%"
@@ -612,32 +549,17 @@ export default function ContactContent() {
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 grayscale contrast-125 opacity-90"
+                className="absolute inset-0 grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
               />
-            </div>
 
-            {/* Contact Card Overlay: 
-              - On mobile/tablet: It renders below the map inside the flex container.
-              - On Desktop (lg): It snaps into an absolute position over the map.
-            */}
-            <div className="bg-white p-6 sm:p-8 lg:absolute lg:bottom-10 lg:left-10 lg:w-[450px] lg:rounded-3xl lg:shadow-2xl lg:border lg:border-slate-100 z-10">
-              <div className="flex flex-col sm:flex-row lg:flex-row items-center sm:items-start lg:items-start text-center sm:text-left lg:text-left gap-4 sm:gap-5">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                  <MapPin className="w-6 h-6 md:w-7 md:h-7" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg md:text-xl font-black text-slate-900 mb-1.5 md:mb-2">
-                    Our Headquarters
-                  </h3>
-                  <p className="text-slate-600 font-bold text-xs md:text-sm mb-1">
-                    L-3, Block-22, F.B Industrial Area
-                  </p>
-                  <p className="text-slate-500 font-medium text-xs md:text-sm mb-3 md:mb-4">
-                    Karachi, Pakistan
-                  </p>
-                  <div className="inline-flex items-center gap-2 text-xs md:text-sm text-blue-600 font-bold bg-blue-50 px-3 py-1.5 md:px-4 md:py-2 rounded-lg md:rounded-xl">
-                    <Phone className="w-3 h-3 md:w-4 md:h-4" />
-                    +92 315 8966670
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl border border-slate-100 max-w-[calc(100%-32px)] sm:max-w-sm">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-brand-50 rounded-lg sm:rounded-xl flex items-center justify-center text-brand-primary shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-black text-slate-900 mb-0.5 sm:mb-1">Our Headquarters</h3>
+                    <p className="text-slate-600 font-medium text-xs sm:text-sm">L-3, Block-22, F.B Industrial Area, Karachi</p>
                   </div>
                 </div>
               </div>

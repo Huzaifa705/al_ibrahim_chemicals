@@ -1,15 +1,25 @@
 @import "tailwindcss";
 
+@theme {
+  /* Al-Ibrahim Brand Colors extracted from logo */
+  --color-brand-dark: #0A4F46;
+  /* Deep Forest Green */
+  --color-brand-primary: #2C8C85;
+  /* Primary Teal */
+  --color-brand-light: #6CB5B1;
+  /* Soft Accent Teal */
+  --color-brand-50: #F0F7F6;
+  /* Extremely light teal for backgrounds */
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #0f172a; /* Slate-900 for better readability than pure black */
-  --brand-blue: #2563eb;
+  --foreground: #0f172a;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  /* Use the CSS variables defined in layout.tsx */
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
   margin: 0;
   padding: 0;
@@ -18,14 +28,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth Scroll for better UX */
 html {
   scroll-behavior: smooth;
 }
 
-/* Improved focus states for accessibility */
 :focus-visible {
-  outline: 2px solid var(--brand-blue);
+  outline: 2px solid var(--color-brand-primary);
   outline-offset: 2px;
 }
 
